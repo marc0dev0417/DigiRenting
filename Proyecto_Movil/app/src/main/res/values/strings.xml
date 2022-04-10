@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Proyecto_Movil</string>
+    <string name="presentAppHome">This is my DigiRenting App</string>
+    <string name="textMainHome">Welcome to my application</string>
+</resources>
