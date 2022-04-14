@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.android.volley.DefaultRetryPolicy
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.StringRequest
@@ -23,7 +24,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var fieldMail : EditText
     private lateinit var fieldPassword : EditText
 
-    private val url = "http://192.168.1.34/users"
+    private val url = "http://192.168.1.34:8080/users"
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -68,7 +69,7 @@ class LoginActivity : AppCompatActivity() {
 
                 val user: User? = gson.fromJson(response, User::class.java)
 
-                if (mail == user!!.mail && password == user.password) {
+                if (mail == user?.mail && password == user.password) {
 
                     Log.d("responseUser", "User is correct")
                     Toast.makeText(this, "Login correcto", Toast.LENGTH_LONG).show()
@@ -91,7 +92,9 @@ class LoginActivity : AppCompatActivity() {
             }) {
 
         }
-
+        stringRequest.retryPolicy = DefaultRetryPolicy(20000,
+            DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+            DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
         mRequestQueue.add(stringRequest)
 
     }

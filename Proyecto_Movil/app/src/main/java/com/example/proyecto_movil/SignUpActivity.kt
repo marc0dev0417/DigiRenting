@@ -29,7 +29,7 @@ class SignUpActivity : AppCompatActivity(){
     private lateinit var fieldAddress : EditText
     private lateinit var fieldPassword : EditText
 
-    val url = "http://192.168.1.34/users"
+    val url = "http://192.168.1.34:8080/users"
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
