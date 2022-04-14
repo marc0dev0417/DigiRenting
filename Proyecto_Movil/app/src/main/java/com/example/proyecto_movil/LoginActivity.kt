@@ -23,7 +23,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var fieldMail : EditText
     private lateinit var fieldPassword : EditText
 
-    private val url = "http://192.168.1.136:8080/users"
+    private val url = "http://192.168.1.34/users"
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -92,7 +92,7 @@ class LoginActivity : AppCompatActivity() {
 
         }
 
-        mRequestQueue!!.add(stringRequest!!)
+        mRequestQueue.add(stringRequest)
 
     }
 
