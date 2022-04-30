@@ -41,7 +41,7 @@ class SliderActivity : AppCompatActivity() {
 
             if (currentPage == TOTAL_SLIDER_FRAGMENTS - 1) {
 
-                startActivity(Intent(this, SignupActivity::class.java))
+                startActivity(Intent(this, MainMenu::class.java))
 
             } else {
 
