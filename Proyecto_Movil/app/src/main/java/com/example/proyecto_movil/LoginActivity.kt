@@ -8,7 +8,6 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.DefaultRetryPolicy
-import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
@@ -20,21 +19,20 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var gson: Gson
     private lateinit var mRequestQueue: RequestQueue
     private lateinit var buttonLogin: Button
-    private lateinit var buttonCancel: Button
+    private lateinit var buttonSignup: Button
     private lateinit var fieldMail : EditText
     private lateinit var fieldPassword : EditText
 
     private val url = "http://192.168.1.34:8080/users"
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        buttonLogin = findViewById(R.id.login_Login)
-        buttonCancel = findViewById(R.id.cancel_Login)
-        fieldMail = findViewById(R.id.mail_Login)
-        fieldPassword = findViewById(R.id.password_Login)
+        buttonLogin = findViewById(R.id.bLogin_Login)
+        buttonSignup = findViewById(R.id.bSignup_Login)
+        fieldMail = findViewById(R.id.etEmail_Login)
+        fieldPassword = findViewById(R.id.etPassword_Login)
 
         buttonLogin.setOnClickListener {
 
@@ -42,13 +40,11 @@ class LoginActivity : AppCompatActivity() {
 
         }
 
-        buttonCancel.setOnClickListener {
+        buttonSignup.setOnClickListener {
 
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, SignupActivity::class.java))
 
         }
-
 
     }
 
@@ -73,7 +69,7 @@ class LoginActivity : AppCompatActivity() {
 
                     Log.d("responseUser", "User is correct")
                     Toast.makeText(this, "Login correcto", Toast.LENGTH_LONG).show()
-                    val intent = Intent(this, HasEntradoActivity::class.java)
+                    val intent = Intent(this, MainMenu::class.java)
                     startActivity(intent)
 
                 } else {
@@ -98,5 +94,4 @@ class LoginActivity : AppCompatActivity() {
         mRequestQueue.add(stringRequest)
 
     }
-
 }

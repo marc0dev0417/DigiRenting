@@ -7,19 +7,19 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.proyecto_movil.model.User
+import com.google.android.material.slider.Slider
 import com.google.gson.Gson
 
-class SignUpActivity : AppCompatActivity(){
+class SignupActivity : AppCompatActivity() {
 
     private lateinit var gson: Gson
     private lateinit var mRequestQueue: RequestQueue
     private lateinit var buttonCreateUser: Button
-    private lateinit var buttonCancel: Button
+    private lateinit var buttonBackToLogin: Button
 
     private lateinit var fieldMail : EditText
     private lateinit var fieldUsername : EditText
@@ -32,33 +32,24 @@ class SignUpActivity : AppCompatActivity(){
     val url = "http://192.168.1.34:8080/users"
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
 
-        buttonCreateUser = findViewById(R.id.createUser_register)
-        buttonCancel = findViewById(R.id.cancel_register)
+        buttonCreateUser = findViewById(R.id.bSignup_Signup)
+        buttonBackToLogin = findViewById(R.id.bBackLogin_Signup)
 
-        fieldMail = findViewById(R.id.mail_register)
-        fieldUsername = findViewById(R.id.username_register)
+        fieldMail = findViewById(R.id.etEmail_Signup)
+        fieldUsername = findViewById(R.id.etUsername_Signup)
 
-        fieldFirstName = findViewById(R.id.firstName_register)
-        fieldLastName = findViewById(R.id.lastName_register)
-        fieldAddress = findViewById(R.id.address_register)
-        fieldPassword = findViewById(R.id.password_register)
+        fieldFirstName = findViewById(R.id.etFirstName_Signup)
+        fieldLastName = findViewById(R.id.etLastName_Signup)
+        fieldAddress = findViewById(R.id.etAddress_Signup)
+        fieldPassword = findViewById(R.id.etPassword_Signup)
 
-        buttonCreateUser.setOnClickListener {
 
-            findByMail()
+        buttonCreateUser.setOnClickListener { findByMail() }
 
-        }
-
-        buttonCancel.setOnClickListener {
-
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-
-        }
+        buttonBackToLogin.setOnClickListener { startActivity(Intent(this, LoginActivity::class.java)) }
 
     }
 
@@ -81,7 +72,7 @@ class SignUpActivity : AppCompatActivity(){
                 if (user == null) {
 
                     addUser()
-                    val intent = Intent(this, HasEntradoActivity::class.java)
+                    val intent = Intent(this, SliderActivity::class.java)
                     startActivity(intent)
 
                 } else {
@@ -93,7 +84,7 @@ class SignUpActivity : AppCompatActivity(){
                     } else {
 
                         addUser()
-                        val intent = Intent(this, HasEntradoActivity::class.java)
+                        val intent = Intent(this, SliderActivity::class.java)
                         startActivity(intent)
 
                     }

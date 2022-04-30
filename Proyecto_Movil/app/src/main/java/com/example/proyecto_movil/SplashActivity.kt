@@ -1,14 +1,18 @@
 package com.example.proyecto_movil
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 
-class HasEntradoActivity : AppCompatActivity() {
+class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
+        Thread.sleep(2000)
+        setTheme(R.style.Theme_digi_renting)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_hasentrado)
+
+        startActivity(Intent(this, LoginActivity::class.java))
 
     }
 

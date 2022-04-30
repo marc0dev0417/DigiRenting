@@ -1,133 +1,202 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignUpActivity">
+    tools:context=".SignupActivity"
+    android:background="#202732">
 
-    <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="729dp"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp">
+    <TextView
+        android:id="@+id/tvTitle_Signup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:text="CREATE AN ACCOUNT"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
-            android:id="@+id/linearLayout_TitleSignup"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.9"
-            android:orientation="horizontal">
+    <EditText
+        android:id="@+id/etFirstName_Signup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/edit_text_rounded"
+        android:hint="First Name"
+        android:inputType="textPersonName"
+        android:paddingVertical="13dp"
+        android:paddingLeft="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle_Signup" />
 
-            <TextView
-                android:id="@+id/textView_SignUp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:text="Sign Up"
-                android:textAlignment="center" />
-        </LinearLayout>
+    <EditText
+        android:id="@+id/etLastName_Signup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/edit_text_rounded"
+        android:hint="Last name"
+        android:inputType="textPersonName"
+        android:paddingVertical="13dp"
+        android:paddingLeft="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etFirstName_Signup" />
 
-        <LinearLayout
-            android:id="@+id/linearLayout_FieldsSignup"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.6"
-            android:orientation="vertical">
+    <EditText
+        android:id="@+id/etAddress_Signup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/edit_text_rounded"
+        android:hint="Address"
+        android:inputType="textPersonName"
+        android:paddingVertical="13dp"
+        android:paddingLeft="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etLastName_Signup" />
 
-            <EditText
-                android:id="@+id/firstName_register"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="55dp"
-                android:layout_weight="2"
-                android:ems="10"
-                android:hint="First Name"
-                android:inputType="textPersonName" />
+    <EditText
+        android:id="@+id/etUsername_Signup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/edit_text_rounded"
+        android:hint="Username"
+        android:inputType="textPersonName"
+        android:paddingVertical="13dp"
+        android:paddingLeft="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etAddress_Signup" />
 
-            <EditText
-                android:id="@+id/lastName_register"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="55dp"
-                android:layout_weight="2"
-                android:ems="10"
-                android:hint="Last Name"
-                android:inputType="textPersonName" />
+    <EditText
+        android:id="@+id/etEmail_Signup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/edit_text_rounded"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:paddingVertical="13dp"
+        android:paddingLeft="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etUsername_Signup" />
 
-            <EditText
-                android:id="@+id/address_register"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="55dp"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="Address"
-                android:inputType="textPersonName" />
+    <EditText
+        android:id="@+id/etPassword_Signup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/edit_text_rounded"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:paddingVertical="13dp"
+        android:paddingLeft="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etEmail_Signup" />
 
-            <EditText
-                android:id="@+id/username_register"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="55dp"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="UserName"
-                android:inputType="textPersonName" />
+    <EditText
+        android:id="@+id/etRePassword_Signup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/edit_text_rounded"
+        android:hint="Repeat password"
+        android:inputType="textPassword"
+        android:paddingVertical="13dp"
+        android:paddingLeft="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etPassword_Signup" />
 
-            <EditText
-                android:id="@+id/mail_register"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="55dp"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="Mail"
-                android:inputType="textPersonName" />
+    <Button
+        android:id="@+id/bSignup_Signup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/button_rounded"
+        android:text="Sign up"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etRePassword_Signup" />
 
-            <EditText
-                android:id="@+id/password_register"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="55dp"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="Password"
-                android:inputType="textPersonName" />
+    <Button
+        android:id="@+id/bBackLogin_Signup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/button_rounded_border"
+        android:text="Go back to login"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bSignup_Signup" />
 
-        </LinearLayout>
+    <ImageButton
+        android:id="@+id/ibGoogle_Login"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:scaleType="fitCenter"
+        android:padding="5dp"
+        android:background="@drawable/button_social_rounded"
+        app:layout_constraintEnd_toStartOf="@+id/ibFacebook_Login"
+        app:layout_constraintTop_toBottomOf="@+id/bBackLogin_Signup"
+        app:srcCompat="@drawable/google_logo" />
 
-        <LinearLayout
-            android:id="@+id/linearLayout_ButtonsSignup"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
-            android:layout_weight="0.7"
-            android:orientation="vertical">
+    <ImageButton
+        android:id="@+id/ibFacebook_Login"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:scaleType="fitCenter"
+        android:background="@drawable/button_social_rounded"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bBackLogin_Signup"
+        app:srcCompat="@drawable/fb_logo" />
 
-            <Button
-                android:id="@+id/createUser_register"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:layout_marginHorizontal="15dp"
-                android:layout_marginTop="40dp"
-                android:layout_weight="1"
-                android:text="Create User" />
-
-            <Button
-                android:id="@+id/cancel_register"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:layout_marginHorizontal="15dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="40dp"
-                android:layout_weight="1"
-                android:text="Cancel" />
-        </LinearLayout>
-
-
-    </LinearLayout>
+    <ImageButton
+        android:id="@+id/ibTwitter_Login"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/button_social_rounded"
+        android:backgroundTint="#00acee"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toEndOf="@+id/ibFacebook_Login"
+        app:layout_constraintTop_toBottomOf="@+id/bBackLogin_Signup"
+        app:srcCompat="@drawable/twitter_logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
