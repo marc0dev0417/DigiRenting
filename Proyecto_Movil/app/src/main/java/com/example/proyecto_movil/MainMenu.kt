@@ -18,13 +18,6 @@ class MainMenu: AppCompatActivity(){
         setContentView(R.layout.menu_main)
 
         bottomNav = findViewById(R.id.bottom_navigation)
-        var imageView: ImageView? = findViewById(R.id.imageIconAddHouse)
-
-        imageView?.setOnClickListener {
-
-            Toast.makeText(this, "Has hecho click en la imagen", Toast.LENGTH_SHORT).show()
-
-        }
 
         Log.d("idReceiver", intent.getIntExtra("userId", 0).toString())
 
