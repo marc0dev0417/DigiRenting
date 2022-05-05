@@ -50,8 +50,8 @@ class SliderAdapter : PagerAdapter() {
         var slideDescription : TextView = view.findViewById(R.id.tvLoremIpsum_slider) as TextView
 
         slideImageView.setImageResource(slideImages[position])
-        slideHeading.setText(slideTitles[position])
-        slideDescription.setText(slideDescriptions[position])
+        slideHeading.text = slideTitles[position]
+        slideDescription.text = slideDescriptions[position]
 
         container.addView(view)
 

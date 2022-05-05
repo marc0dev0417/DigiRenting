@@ -23,7 +23,8 @@
    <color name="colorItem3End">#602060</color>
 
    <color name="colorItem4Start">#00B33C</color>
-   <color name="colorItem4End">#006622</color>
+   <color name="colorItem4End">#ebe8e1</color>
+   <color name="colorNavigation">#bebfbd</color>
 
    <color name="colorEndBackground">#50FFFFFF</color>
    <color name="colorLightText">#ECECEC</color>
