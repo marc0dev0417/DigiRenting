@@ -29,7 +29,7 @@ class SignupActivity : AppCompatActivity() {
     private lateinit var fieldAddress : EditText
     private lateinit var fieldPassword : EditText
 
-    val url = "http://192.168.1.34:8080/users"
+    val url = "http://192.168.1.138:8080/users"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,59 +47,9 @@ class SignupActivity : AppCompatActivity() {
         fieldPassword = findViewById(R.id.etPassword_Signup)
 
 
-        buttonCreateUser.setOnClickListener { findByMail() }
+        buttonCreateUser.setOnClickListener { addUser() }
 
         buttonBackToLogin.setOnClickListener { startActivity(Intent(this, LoginActivity::class.java)) }
-
-    }
-
-    fun findByMail() {
-
-        val mail = fieldMail.text.toString()
-
-        gson = Gson()
-
-        mRequestQueue = Volley.newRequestQueue(this)
-
-        val stringRequest = object: StringRequest(
-            Method.GET, "$url?mail=$mail",
-            {
-
-                    response ->  Log.d("responseMessage", response)
-
-                val user: User? = gson.fromJson(response, User::class.java)
-
-                if (user == null) {
-
-                    addUser()
-                    val intent = Intent(this, SliderActivity::class.java)
-                    startActivity(intent)
-
-                } else {
-
-                    if (mail == user.mail) {
-
-                        Toast.makeText(this, "Ya existe un usuario con el mismo mail", Toast.LENGTH_LONG).show()
-
-                    } else {
-
-                        addUser()
-                        val intent = Intent(this, SliderActivity::class.java)
-                        startActivity(intent)
-
-                    }
-
-                }
-
-            }, {
-
-                    error -> Log.d("responseMessage", error.toString())
-
-            }) {
-
-        }
-
-        mRequestQueue.add(stringRequest)
 
     }
 
@@ -114,18 +64,23 @@ class SignupActivity : AppCompatActivity() {
             fieldAddress.text.toString(),
             fieldUsername.text.toString(),
             fieldMail.text.toString(),
-            fieldPassword.text.toString()
+            fieldPassword.text.toString(),
+            houses = null,
+            houseLikes = null
         )
 
         val stringJson = gson.toJson(user, User::class.java)
         val stringRequest = object: StringRequest(Method.POST, url,
             {
 
-                    response ->  Log.d("responseMessage", response)
+                    Log.d("responseMessage", it)
+                    var intent = Intent(this, SliderActivity::class.java)
+                    startActivity(intent)
 
             }, {
 
-                    error -> Log.d("responseMessage", error.toString())
+                    Log.d("responseMessage", it.toString())
+                    Toast.makeText(this, "El usuario ya existe", Toast.LENGTH_SHORT).show()
 
             }) {
 

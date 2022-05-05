@@ -1,6 +1,9 @@
 package com.example.proyecto_movil
 
 import android.os.Bundle
+import android.util.Log
+import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -15,6 +18,15 @@ class MainMenu: AppCompatActivity(){
         setContentView(R.layout.menu_main)
 
         bottomNav = findViewById(R.id.bottom_navigation)
+        var imageView: ImageView? = findViewById(R.id.imageIconAddHouse)
+
+        imageView?.setOnClickListener {
+
+            Toast.makeText(this, "Has hecho click en la imagen", Toast.LENGTH_SHORT).show()
+
+        }
+
+        Log.d("idReceiver", intent.getIntExtra("userId", 0).toString())
 
         supportFragmentManager.beginTransaction().replace(R.id.frament_container,
             HomeFragment()

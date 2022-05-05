@@ -23,7 +23,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var fieldMail : EditText
     private lateinit var fieldPassword : EditText
 
-    private val url = "http://192.168.1.34:8080/users"
+    val url = "http://192.168.1.138:8080/users"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,7 +69,9 @@ class LoginActivity : AppCompatActivity() {
 
                     Log.d("responseUser", "User is correct")
                     Toast.makeText(this, "Login correcto", Toast.LENGTH_LONG).show()
+
                     val intent = Intent(this, MainMenu::class.java)
+                    intent.putExtra("userId", user.idUser)
                     startActivity(intent)
 
                 } else {
@@ -83,7 +85,8 @@ class LoginActivity : AppCompatActivity() {
 
             }, {
 
-                    error -> Log.d("responseMessage", error.toString())
+                    Log.d("responseMessage", it.toString())
+                    Toast.makeText(this, "Login incorrecto", Toast.LENGTH_SHORT)
 
             }) {
 
