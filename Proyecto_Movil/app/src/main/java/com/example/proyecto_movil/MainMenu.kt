@@ -29,7 +29,7 @@ class MainMenu: AppCompatActivity(){
             when(it.itemId){
                 R.id.nav_home -> selectedFragment = HomeFragment()
                 R.id.nav_favorites -> selectedFragment = FavoritesFrament()
-                R.id.nav_search -> selectedFragment = SearchFrament()
+                R.id.nav_search -> selectedFragment = AddFrament()
             }
             supportFragmentManager.beginTransaction().replace(R.id.frament_container,
                 selectedFragment!!
