@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1052677638336",
+    "project_id": "digirenting-images",
+    "storage_bucket": "digirenting-images.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1052677638336:android:902f198a2d75d06d378525",
+        "android_client_info": {
+          "package_name": "com.example.proyecto_movil"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1052677638336-4ptk6letk6ffqkbffhnni0rfd0seughf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9BljyPF-pIx06-wleq1MT96ftOORFuAY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1052677638336-4ptk6letk6ffqkbffhnni0rfd0seughf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -11,6 +11,9 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.Nullable
 import androidx.fragment.app.Fragment
 
+import com.google.firebase.storage.*
+import java.io.File
+
 class AddFrament : Fragment() {
 
     private lateinit var buttonChoose: Button
@@ -24,6 +27,9 @@ class AddFrament : Fragment() {
     private var count = 0
 
     //Utils to firebase =>
+    private lateinit var storageReference: StorageReference
+    private lateinit var uploadTask: UploadTask
+    private lateinit var fileImage: File
     private val listUrl: MutableList<String> = mutableListOf()
 
     @Nullable
@@ -37,6 +43,10 @@ class AddFrament : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        storageReference = FirebaseStorage.getInstance().reference
+
+
 
         buttonChoose = view.findViewById(R.id.button_choose)
 
@@ -76,9 +86,24 @@ class AddFrament : Fragment() {
             count--
         }else{
             when(count){
-                1 -> imageViewFirst.setImageURI(imageUri)
-                2 -> imageViewSecond.setImageURI(imageUri)
-                3 -> imageViewThird.setImageURI(imageUri)
+                1 -> {
+                    imageViewFirst.setImageURI(imageUri)
+                    fileImage = File(imageUri.path)
+
+                    uploadTask = storageReference.child("houses_images/${fileImage.name}").putFile(imageUri)
+
+                    uploadTask.addOnSuccessListener {
+                        Toast.makeText(context, "The image has been uploaded", Toast.LENGTH_LONG).show()
+                    }.addOnFailureListener{
+                        Toast.makeText(context, "Not has been uploaded", Toast.LENGTH_LONG).show()
+                    }
+                }
+                2 -> {
+                    imageViewSecond.setImageURI(imageUri)
+                }
+                3 -> {
+                    imageViewThird.setImageURI(imageUri)
+                }
             }
             //listUri.add(imageUri)
         }
