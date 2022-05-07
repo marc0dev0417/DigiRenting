@@ -1,7 +1,6 @@
 package com.example.proyecto_movil.model
 
 data class User(
-
     var idUser:Int? = null,
     var firstname:String,
     var lastname:String,
@@ -11,5 +10,4 @@ data class User(
     var password:String,
     var houses: MutableList<House>? = null,
     var houseLikes: MutableList<House>? = null
-
 )
