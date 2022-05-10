@@ -33,8 +33,13 @@ class AddFrament : Fragment() {
     private lateinit var imageViewFirst: ImageView
     private lateinit var imageViewSecond: ImageView
     private lateinit var imageViewThird: ImageView
-    //fields =>
+
+    //Fields =>
     private lateinit var regionEditText: EditText
+    private lateinit var addressEditText: EditText
+    private lateinit var priceEdiText: EditText
+    private lateinit var spaceEditText: EditText
+    private lateinit var descriptionEditText: EditText
 
     //Counts to controller the state in Button Choose =>
     private var count = 0
