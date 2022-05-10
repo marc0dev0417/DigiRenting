@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.text.HtmlCompat
 import androidx.viewpager.widget.ViewPager
 
 class SliderActivity : AppCompatActivity() {
@@ -48,7 +49,6 @@ class SliderActivity : AppCompatActivity() {
                 viewPager.currentItem = currentPage + 1
 
             }
-
         }
 
         buttonPrev.setOnClickListener {
@@ -56,7 +56,6 @@ class SliderActivity : AppCompatActivity() {
             viewPager.currentItem = currentPage - 1
 
         }
-
 
         addDotsIndicator(0)
 
@@ -108,13 +107,9 @@ class SliderActivity : AppCompatActivity() {
                         buttonPrev.text = "Previous"
 
                     }
-
                 }
-
             }
-
         })
-
     }
 
     fun addDotsIndicator(position: Int) {
@@ -125,21 +120,19 @@ class SliderActivity : AppCompatActivity() {
         for (i in mDots.indices) {
 
             mDots[i] = TextView(this)
-            mDots[i]?.text = Html.fromHtml("&#8226")
+            //mDots[i]?.text = Html.fromHtml("&#8226")
+            mDots[i]?.text = HtmlCompat.fromHtml("&#8226", HtmlCompat.FROM_HTML_MODE_LEGACY)
             mDots[i]?.textSize = 35F
-            mDots[i]?.setTextColor(resources.getColor(R.color.white))
+            //mDots[i]?.setTextColor(resources.getColor(R.color.white))
+            mDots[i]?.setTextColor(resources.getColor(R.color.white, theme))
 
             dotLayout.addView(mDots[i])
 
         }
 
         if (mDots.isNotEmpty()) {
-
-            mDots[position]?.setTextColor(resources.getColor(R.color.purple_500))
-
+           // mDots[position]?.setTextColor(resources.getColor(R.color.purple_500))
+            mDots[position]?.setTextColor(resources.getColor(R.color.purple_500, theme))
         }
-
     }
-
-
 }

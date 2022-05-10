@@ -26,6 +26,8 @@
    <color name="colorItem4End">#ebe8e1</color>
    <color name="colorNavigation">#bebfbd</color>
 
+   <color name="colorBackgroundFragment">#e3f2fd</color>
+
    <color name="colorEndBackground">#50FFFFFF</color>
    <color name="colorLightText">#ECECEC</color>
    <color name="colorWhite">#FFFFFF</color>

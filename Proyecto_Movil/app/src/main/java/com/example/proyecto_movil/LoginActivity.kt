@@ -23,7 +23,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var fieldMail : EditText
     private lateinit var fieldPassword : EditText
 
-    val url = "http://192.168.1.138:8080/users"
+    val url = "http://192.168.50.93:8080/users"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +48,7 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
-    fun findByMail() {
+    private fun findByMail() {
 
         val mail = fieldMail.text.toString()
         val password = fieldPassword.text.toString()

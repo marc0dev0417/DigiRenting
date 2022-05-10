@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorItem4End">
+    android:background="@color/colorBackgroundFragment">
 
     <TextView
         android:layout_width="wrap_content"
@@ -19,25 +19,29 @@
         android:layout_marginTop="100dp">
 
         <ImageView
+            android:id="@+id/image_view_first"
             android:layout_width="125dp"
             android:layout_height="125dp"
             android:layout_gravity="start|top"
-            android:id="@+id/image_view_first"
-            android:background="#646464" />
+            android:scaleType="fitXY"
+            android:src="@drawable/house_view"
+             />
 
         <ImageView
+            android:id="@+id/image_view_second"
             android:layout_width="125dp"
             android:layout_height="125dp"
             android:layout_gravity="center|top"
-            android:id="@+id/image_view_second"
-            android:background="#646464" />
+            android:scaleType="fitXY"
+            android:src="@drawable/house_view" />
 
         <ImageView
+            android:id="@+id/image_view_third"
             android:layout_width="125dp"
             android:layout_height="125dp"
             android:layout_gravity="end|top"
-            android:id="@+id/image_view_third"
-            android:background="#646464" />
+            android:scaleType="fitXY"
+            android:src="@drawable/house_view" />
 
         <Button
             android:id="@+id/button_choose"
@@ -93,7 +97,7 @@
             android:id="@+id/space_add_house"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="210dp"
+            android:layout_marginStart="216dp"
             android:layout_marginTop="360dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/edit_text_rounded"

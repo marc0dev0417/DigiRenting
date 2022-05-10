@@ -2,12 +2,12 @@ package com.example.proyecto_movil.model
 
 data class User(
     var idUser:Int? = null,
-    var firstname:String,
-    var lastname:String,
-    var address:String,
-    var username:String,
-    var mail:String,
-    var password:String,
+    var firstname:String? = null,
+    var lastname:String? = null,
+    var address:String? = null,
+    var username:String? = null,
+    var mail:String? = null,
+    var password:String? = null,
     var houses: MutableList<House>? = null,
     var houseLikes: MutableList<House>? = null
 )

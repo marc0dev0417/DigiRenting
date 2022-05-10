@@ -12,6 +12,8 @@ class MainMenu: AppCompatActivity(){
 
     private lateinit var bottomNav:BottomNavigationView
 
+     var idUser: Int = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -20,6 +22,8 @@ class MainMenu: AppCompatActivity(){
         bottomNav = findViewById(R.id.bottom_navigation)
 
         Log.d("idReceiver", intent.getIntExtra("userId", 0).toString())
+
+        idUser = intent.getIntExtra("userId", 0)
 
         supportFragmentManager.beginTransaction().replace(R.id.frament_container,
             HomeFragment()
