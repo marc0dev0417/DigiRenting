@@ -72,34 +72,23 @@ class SignupActivity : AppCompatActivity() {
         val stringJson = gson.toJson(user, User::class.java)
         val stringRequest = object: StringRequest(Method.POST, url,
             {
-
                     Log.d("responseMessage", it)
                     var intent = Intent(this, SliderActivity::class.java)
                     startActivity(intent)
 
             }, {
-
                     Log.d("responseMessage", it.toString())
                     Toast.makeText(this, "El usuario ya existe", Toast.LENGTH_SHORT).show()
-
             }) {
 
             override fun getBodyContentType(): String {
-
                 return "application/json"
-
             }
 
             override fun getBody(): ByteArray {
-
                 return stringJson.toByteArray()
-
             }
-
         }
-
         mRequestQueue!!.add(stringRequest!!)
-
     }
-
 }

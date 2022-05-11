@@ -151,15 +151,11 @@ class AddFrament : Fragment() {
                     }) {
 
                     override fun getBodyContentType(): String {
-
                         return "application/json"
-
                     }
 
                     override fun getBody(): ByteArray {
-
                         return stringJson.toByteArray()
-
                     }
 
                 }
@@ -217,8 +213,6 @@ class AddFrament : Fragment() {
                     buttonChoose.isEnabled = false
                 }
             }
-            //listUri.add(imageUri)
         }
     }
-
 }
