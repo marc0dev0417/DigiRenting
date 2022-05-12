@@ -8,7 +8,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainMenu: AppCompatActivity(){
 
-    private lateinit var bottomNav: BottomNavigationView
+    private lateinit var bottomNav: me.ibrahimsn.lib.SmoothBottomBar
     private lateinit var topNav: BottomNavigationView
     private lateinit var titleFragment: String
 
@@ -20,7 +20,7 @@ class MainMenu: AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.menu_main)
 
-        bottomNav = findViewById(R.id.bottom_navigation)
+        bottomNav = findViewById(R.id.bottomBar)
         topNav = findViewById(R.id.top_navigation)
 
 
@@ -33,15 +33,15 @@ class MainMenu: AppCompatActivity(){
         ).commit()
         bottomNav.setOnItemSelectedListener {
             var selectedFragment: Fragment? = null
-            when(it.itemId){
-                R.id.nav_home -> selectedFragment = HomeFragment()
-                R.id.nav_favorites -> selectedFragment = FavoritesFragment()
-                R.id.nav_search -> selectedFragment = AddFragment()
+            when(it){
+                0 -> selectedFragment = HomeFragment()
+                1 -> selectedFragment = FavoritesFragment()
+                2 -> selectedFragment = AddFragment()
             }
             supportFragmentManager.beginTransaction().replace(R.id.frament_container,
                 selectedFragment!!
             ).commit()
-            return@setOnItemSelectedListener true
+            return@setOnItemSelectedListener
         }
         topNav.setOnItemSelectedListener {
             var selectedFragment: Fragment? = null

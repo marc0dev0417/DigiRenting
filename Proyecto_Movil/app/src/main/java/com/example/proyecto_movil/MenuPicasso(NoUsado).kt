@@ -1,31 +1,23 @@
 package com.example.proyecto_movil
 
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.*
-import androidx.annotation.Nullable
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import kotlin.math.abs
 
-class HomeFragment : Fragment() {
+class `MenuPicasso(NoUsado)` : AppCompatActivity() {
 
-    @Nullable
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-       setHasOptionsMenu(true)
-        return inflater.inflate(R.layout.fragment_home, container, false)
-    }
+    override fun onCreate(savedInstanceState: Bundle?) {
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_menu_picasso_no_usado)
 
-        var locationsViewPager : ViewPager2 = view.findViewById(R.id.locationsViewPager)
+        var menu : me.ibrahimsn.lib.SmoothBottomBar = findViewById(R.id.bottomBar)
+
+        var locationsViewPager : ViewPager2 = findViewById(R.id.locationsViewPager)
 
         var travelLocationEiffelTower = TravelLocation()
         travelLocationEiffelTower.imageUrl = "https://media.revistaad.es/photos/623afa27430e667b20addca1/master/w_1600%2Cc_limit/142198198"
@@ -54,12 +46,12 @@ class HomeFragment : Fragment() {
         var travelLocations : List<TravelLocation> = arrayListOf(travelLocationEiffelTower, travelLocationMountainView, travelLocationTajMahal, travelLocationLakeView)
 
         locationsViewPager.adapter = TravelLocationsAdapter(travelLocations)
-
+        
         locationsViewPager.clipToPadding = false
         locationsViewPager.clipChildren = false
         locationsViewPager.offscreenPageLimit = 3
         locationsViewPager.getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
-
+        
         var compositePageTransformer = CompositePageTransformer()
         compositePageTransformer.addTransformer(MarginPageTransformer(40))
         compositePageTransformer.addTransformer { page, position ->
@@ -74,6 +66,5 @@ class HomeFragment : Fragment() {
         locationsViewPager.setPageTransformer(compositePageTransformer)
 
     }
-
 
 }

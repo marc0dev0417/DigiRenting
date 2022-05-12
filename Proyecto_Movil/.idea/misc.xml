@@ -3,18 +3,37 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Iker/Desktop/DigiRenting/Proyecto_Movil/app/src/main/res/drawable/background_star_rating.xml" value="0.127" />
         <entry key="..\:/Users/Iker/Desktop/DigiRenting/Proyecto_Movil/app/src/main/res/drawable/button_rounded.xml" value="0.1" />
+        <entry key="..\:/Users/Iker/Desktop/DigiRenting/Proyecto_Movil/app/src/main/res/drawable/ic_baseline_add_home_work_24.xml" value="0.181" />
+        <entry key="..\:/Users/Iker/Desktop/DigiRenting/Proyecto_Movil/app/src/main/res/drawable/ic_baseline_apartment_24.xml" value="0.181" />
+        <entry key="..\:/Users/Iker/Desktop/DigiRenting/Proyecto_Movil/app/src/main/res/drawable/ic_baseline_face_24.xml" value="0.181" />
+        <entry key="..\:/Users/Iker/Desktop/DigiRenting/Proyecto_Movil/app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.181" />
+        <entry key="..\:/Users/Iker/Desktop/DigiRenting/Proyecto_Movil/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.181" />
         <entry key="..\:/Users/Iker/Desktop/DigiRenting/Proyecto_Movil/app/src/main/res/drawable/splash_screen.xml" value="0.1385" />
         <entry key="..\:/Users/Iker/Desktop/DigiRenting/Proyecto_Movil/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/Users/Iker/Desktop/DigiRenting/Proyecto_Movil/app/src/main/res/layout/activity_main.xml" value="0.18009118541033434" />
-        <entry key="..\:/Users/Iker/Desktop/DigiRenting/Proyecto_Movil/app/src/main/res/layout/activity_signup.xml" value="0.20652173913043478" />
+        <entry key="..\:/Users/Iker/Desktop/DigiRenting/Proyecto_Movil/app/src/main/res/layout/activity_menu_picasso.xml" value="0.1778115501519757" />
+        <entry key="..\:/Users/Iker/Desktop/DigiRenting/Proyecto_Movil/app/src/main/res/layout/activity_signup.xml" value="0.25" />
         <entry key="..\:/Users/Iker/Desktop/DigiRenting/Proyecto_Movil/app/src/main/res/layout/activity_slider.xml" value="0.20652173913043478" />
         <entry key="..\:/Users/Iker/Desktop/DigiRenting/Proyecto_Movil/app/src/main/res/layout/activity_splash.xml" value="0.13703703703703704" />
+        <entry key="..\:/Users/Iker/Desktop/DigiRenting/Proyecto_Movil/app/src/main/res/layout/fragment_favorite.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Iker/Desktop/DigiRenting/Proyecto_Movil/app/src/main/res/layout/fragment_home.xml" value="0.33" />
+        <entry key="..\:/Users/Iker/Desktop/DigiRenting/Proyecto_Movil/app/src/main/res/layout/fragment_profile.xml" value="0.5" />
+        <entry key="..\:/Users/Iker/Desktop/DigiRenting/Proyecto_Movil/app/src/main/res/layout/fragment_remove.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Iker/Desktop/DigiRenting/Proyecto_Movil/app/src/main/res/layout/frament_add.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Iker/Desktop/DigiRenting/Proyecto_Movil/app/src/main/res/layout/frament_favorites.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Iker/Desktop/DigiRenting/Proyecto_Movil/app/src/main/res/layout/frament_home.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Iker/Desktop/DigiRenting/Proyecto_Movil/app/src/main/res/layout/frament_search.xml" value="0.29936594202898553" />
+        <entry key="..\:/Users/Iker/Desktop/DigiRenting/Proyecto_Movil/app/src/main/res/layout/item_container_location.xml" value="0.1778115501519757" />
+        <entry key="..\:/Users/Iker/Desktop/DigiRenting/Proyecto_Movil/app/src/main/res/layout/list_house_remove_card.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Iker/Desktop/DigiRenting/Proyecto_Movil/app/src/main/res/layout/menu_main.xml" value="0.29936594202898553" />
         <entry key="..\:/Users/Iker/Desktop/DigiRenting/Proyecto_Movil/app/src/main/res/layout/new_design_home.xml" value="0.5" />
-        <entry key="..\:/Users/Iker/Desktop/DigiRenting/Proyecto_Movil/app/src/main/res/layout/slide_layout.xml" value="0.13703703703703704" />
+        <entry key="..\:/Users/Iker/Desktop/DigiRenting/Proyecto_Movil/app/src/main/res/layout/slide_layout.xml" value="0.21" />
+        <entry key="..\:/Users/Iker/Desktop/DigiRenting/Proyecto_Movil/app/src/main/res/menu/bottom_navigation.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Iker/Desktop/DigiRenting/Proyecto_Movil/app/src/main/res/menu/navigation_menu.xml" value="0.2388888888888889" />
+        <entry key="..\:/Users/Iker/Desktop/DigiRenting/Proyecto_Movil/app/src/main/res/menu/profile_menu.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Iker/Desktop/DigiRenting/Proyecto_Movil/app/src/main/res/menu/top_navigation.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Iker/Desktop/Proyecto-DigiRenting/Proyecto_Movil/app/src/main/res/layout/activity_hasentrado.xml" value="0.22" />
         <entry key="..\:/Users/Iker/Desktop/Proyecto-DigiRenting/Proyecto_Movil/app/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Iker/Desktop/Proyecto-DigiRenting/Proyecto_Movil/app/src/main/res/layout/activity_main.xml" value="0.34646739130434784" />
@@ -35,33 +54,18 @@
         <entry key="..\:/Users/Marco Alonso Benegas/OneDrive/Escritorio/Proyecto-DigiRenting/Proyecto_Movil/app/src/main/res/layout/menu_main.xml" value="0.33" />
         <entry key="..\:/Users/Marco Alonso Benegas/OneDrive/Escritorio/Proyecto-DigiRenting/Proyecto_Movil/app/src/main/res/layout/new_design_home.xml" value="0.33" />
         <entry key="..\:/Users/Marco Alonso Benegas/OneDrive/Escritorio/Proyecto-DigiRenting/Proyecto_Movil/app/src/main/res/menu/bottom_navigation.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/mbenegas/StudioProjects/DigiRenting/Proyecto_Movil/app/src/main/res/drawable/border_add_house.xml" value="0.2" />
-        <entry key="..\:/Users/mbenegas/StudioProjects/DigiRenting/Proyecto_Movil/app/src/main/res/drawable/custom_border_card.xml" value="0.1275" />
         <entry key="..\:/Users/mbenegas/StudioProjects/DigiRenting/Proyecto_Movil/app/src/main/res/drawable/ic_baseline_apartment_24.xml" value="0.14" />
-        <entry key="..\:/Users/mbenegas/StudioProjects/DigiRenting/Proyecto_Movil/app/src/main/res/drawable/ic_baseline_face_24.xml" value="0.3265" />
         <entry key="..\:/Users/mbenegas/StudioProjects/DigiRenting/Proyecto_Movil/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/mbenegas/StudioProjects/DigiRenting/Proyecto_Movil/app/src/main/res/layout/activity_signup.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/mbenegas/StudioProjects/DigiRenting/Proyecto_Movil/app/src/main/res/layout/activity_slider.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/mbenegas/StudioProjects/DigiRenting/Proyecto_Movil/app/src/main/res/layout/activity_splash.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/mbenegas/StudioProjects/DigiRenting/Proyecto_Movil/app/src/main/res/layout/custom_border_card.xml" value="0.1" />
-        <entry key="..\:/Users/mbenegas/StudioProjects/DigiRenting/Proyecto_Movil/app/src/main/res/layout/fragment_add.xml" value="0.22916666666666666" />
-        <entry key="..\:/Users/mbenegas/StudioProjects/DigiRenting/Proyecto_Movil/app/src/main/res/layout/fragment_favorites.xml" value="0.18385416666666668" />
-        <entry key="..\:/Users/mbenegas/StudioProjects/DigiRenting/Proyecto_Movil/app/src/main/res/layout/fragment_profile.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/mbenegas/StudioProjects/DigiRenting/Proyecto_Movil/app/src/main/res/layout/fragment_remove.xml" value="0.1" />
-        <entry key="..\:/Users/mbenegas/StudioProjects/DigiRenting/Proyecto_Movil/app/src/main/res/layout/fragment_remove_house.xml" value="0.1" />
-        <entry key="..\:/Users/mbenegas/StudioProjects/DigiRenting/Proyecto_Movil/app/src/main/res/layout/frament_add.xml" value="0.34894259818731116" />
-        <entry key="..\:/Users/mbenegas/StudioProjects/DigiRenting/Proyecto_Movil/app/src/main/res/layout/frament_favorites.xml" value="0.264" />
+        <entry key="..\:/Users/mbenegas/StudioProjects/DigiRenting/Proyecto_Movil/app/src/main/res/layout/frament_favorites.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/mbenegas/StudioProjects/DigiRenting/Proyecto_Movil/app/src/main/res/layout/frament_home.xml" value="0.1381340579710145" />
         <entry key="..\:/Users/mbenegas/StudioProjects/DigiRenting/Proyecto_Movil/app/src/main/res/layout/frament_search.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/mbenegas/StudioProjects/DigiRenting/Proyecto_Movil/app/src/main/res/layout/image_favorite.xml" value="0.23596014492753623" />
-        <entry key="..\:/Users/mbenegas/StudioProjects/DigiRenting/Proyecto_Movil/app/src/main/res/layout/list_house_favorites_card.xml" value="0.264" />
-        <entry key="..\:/Users/mbenegas/StudioProjects/DigiRenting/Proyecto_Movil/app/src/main/res/layout/list_house_remove_card.xml" value="0.1" />
         <entry key="..\:/Users/mbenegas/StudioProjects/DigiRenting/Proyecto_Movil/app/src/main/res/layout/menu_main.xml" value="0.264" />
         <entry key="..\:/Users/mbenegas/StudioProjects/DigiRenting/Proyecto_Movil/app/src/main/res/layout/new_design_home.xml" value="0.264" />
         <entry key="..\:/Users/mbenegas/StudioProjects/DigiRenting/Proyecto_Movil/app/src/main/res/layout/slide_layout.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/mbenegas/StudioProjects/DigiRenting/Proyecto_Movil/app/src/main/res/menu/bottom_navigation.xml" value="0.4" />
-        <entry key="..\:/Users/mbenegas/StudioProjects/DigiRenting/Proyecto_Movil/app/src/main/res/menu/profile_menu.xml" value="0.536" />
-        <entry key="..\:/Users/mbenegas/StudioProjects/DigiRenting/Proyecto_Movil/app/src/main/res/menu/top_navigation.xml" value="0.36666666666666664" />
       </map>
     </option>
   </component>

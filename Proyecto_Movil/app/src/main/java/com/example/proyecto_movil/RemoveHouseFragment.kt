@@ -36,7 +36,6 @@ class RemoveHouseFragment : Fragment() {
 
         recyclerViewFavorite.adapter = adapterFavorite
 
-        recyclerViewFavorite.setHasFixedSize(true)
         val gridLayoutManager = GridLayoutManager(context, 1)
 
         recyclerViewFavorite.layoutManager = gridLayoutManager
