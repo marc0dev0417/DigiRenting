@@ -86,7 +86,7 @@ class LoginActivity : AppCompatActivity() {
             }, {
 
                     Log.d("responseMessage", it.toString())
-                    Toast.makeText(this, "Login incorrecto", Toast.LENGTH_SHORT)
+                    Toast.makeText(this, "Login incorrecto", Toast.LENGTH_SHORT).show()
 
             }) {
 

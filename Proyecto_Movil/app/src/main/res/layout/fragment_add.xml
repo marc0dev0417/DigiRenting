@@ -4,15 +4,6 @@
     android:layout_height="match_parent"
     android:background="@color/colorBackgroundFragment">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text="Add Houses"
-        android:textColor="@color/black"
-        android:textSize="30sp" />
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -20,8 +11,8 @@
 
         <ImageView
             android:id="@+id/image_view_first"
-            android:layout_width="125dp"
-            android:layout_height="125dp"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
             android:layout_gravity="start|top"
             android:scaleType="fitXY"
             android:src="@drawable/house_view"
@@ -29,16 +20,16 @@
 
         <ImageView
             android:id="@+id/image_view_second"
-            android:layout_width="125dp"
-            android:layout_height="125dp"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
             android:layout_gravity="center|top"
             android:scaleType="fitXY"
             android:src="@drawable/house_view" />
 
         <ImageView
             android:id="@+id/image_view_third"
-            android:layout_width="125dp"
-            android:layout_height="125dp"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
             android:layout_gravity="end|top"
             android:scaleType="fitXY"
             android:src="@drawable/house_view" />

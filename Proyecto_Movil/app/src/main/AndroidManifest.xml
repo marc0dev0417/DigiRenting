@@ -20,6 +20,8 @@
             android:name=".SplashActivity"
             android:theme="@style/SplashTheme"
             android:exported="true">
+
+
         </activity>
 
 

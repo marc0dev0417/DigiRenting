@@ -11,9 +11,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.proyecto_movil.R
 import com.squareup.picasso.Picasso
 
-class AdapterFavorite(context: Context? = null, listImage: MutableList<ModelFavoriteHouse>) : RecyclerView.Adapter<AdapterFavorite.ImageHolder>() {
+class AdapterRemoveHouse(context: Context? = null, listImage: MutableList<ModelRemoveHouse>) : RecyclerView.Adapter<AdapterRemoveHouse.ImageHolder>() {
     private var context: Context = context!!
-     private var listFavoriteHouse: MutableList<ModelFavoriteHouse> = listImage
+     private var listRemoveHouse: MutableList<ModelRemoveHouse> = listImage
 
     class ImageHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var imageView: ImageView? = null
@@ -27,27 +27,29 @@ class AdapterFavorite(context: Context? = null, listImage: MutableList<ModelFavo
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageHolder {
         val view =
-            LayoutInflater.from(context).inflate(R.layout.list_house_favorites_card, parent, false)
+            LayoutInflater.from(context).inflate(R.layout.list_house_remove_card, parent, false)
         return ImageHolder(view)
     }
 
     override fun onBindViewHolder(holder: ImageHolder, position: Int) {
-        Picasso.get().load(listFavoriteHouse[position].url).resize(400, 400).into(holder.imageView)
+        Picasso.get().load(listRemoveHouse[position].url).resize(400, 400).into(holder.imageView)
 
         holder.buttonRemove?.setOnClickListener {
             Toast.makeText(context, "hello i am position $position", Toast.LENGTH_SHORT).show()
 
+
             var newPosition = position
 
-            listFavoriteHouse.removeAt(newPosition)
-            notifyItemRemoved(newPosition)
+            listRemoveHouse.removeAt(newPosition)
+             notifyItemRemoved(newPosition)
 
-            notifyItemChanged(newPosition, listFavoriteHouse.size)
+            notifyItemRangeChanged(position, listRemoveHouse.size)
+
         }
     }
 
     override fun getItemCount(): Int {
-        return listFavoriteHouse.size
+        return listRemoveHouse.size
     }
 
 }

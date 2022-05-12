@@ -17,13 +17,13 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.proyecto_movil.model.House
 import com.example.proyecto_movil.model.Image
-import com.example.proyecto_movil.model.User
 import com.google.android.gms.tasks.Task
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.storage.*
 import com.google.gson.Gson
 import java.io.File
 
-class AddFrament : Fragment() {
+class AddFragment : Fragment() {
 
     //List =>
     private val listHouse: MutableList<House> = mutableListOf()
@@ -62,6 +62,7 @@ class AddFrament : Fragment() {
     private val listUriImage: MutableList<Uri> = mutableListOf()
     private val listUrl: MutableList<String> = mutableListOf()
 
+    private lateinit var bottomNavigationView: BottomNavigationView
 
     @Nullable
     override fun onCreateView(
@@ -69,7 +70,7 @@ class AddFrament : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.frament_add, container, false)
+        return inflater.inflate(R.layout.fragment_add, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -97,9 +98,12 @@ class AddFrament : Fragment() {
         descriptionEditText = view.findViewById(R.id.description_add_house)
 
 
+
         buttonUpload.setOnClickListener {
             url = "http://192.168.50.93:8080/users/$id"
             var house: House
+
+    if(validationFields()){
             for (uriImage: Uri in listUriImage) {
 
                 fileImage = File(uriImage.path)
@@ -121,7 +125,8 @@ class AddFrament : Fragment() {
                 storageReference.child("houses_images/${fileImage.name}").putFile(listUriImage[2])
 
             uploadTask.addOnCompleteListener {
-                Toast.makeText(context, "Termino la tarea ${listImage.size}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Termino la tarea ${listImage.size}", Toast.LENGTH_SHORT)
+                    .show()
 
                 house = House(
                     address = addressEditText.text.toString(),
@@ -136,17 +141,17 @@ class AddFrament : Fragment() {
                 gson = Gson()
 
                 val stringJson = gson.toJson(house, House::class.java)
-                val stringRequest = object: StringRequest(
+                val stringRequest = object : StringRequest(
                     Method.PUT, url,
                     {
 
                         Log.d("responseMessageHouse", it)
-                        Toast.makeText(context, "Se ha añadido" ,Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Se ha añadido", Toast.LENGTH_SHORT).show()
 
                     }, {
 
                         Log.d("responseMessageHouse", it.toString())
-                        Toast.makeText(context, "No se ha añadido" ,Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "No se ha añadido", Toast.LENGTH_SHORT).show()
 
                     }) {
 
@@ -163,11 +168,17 @@ class AddFrament : Fragment() {
                 mRequestQueue!!.add(stringRequest!!)
 
 
-                for(imageUrl: String in listUrl){
+                for (imageUrl: String in listUrl) {
                     Log.d("url", imageUrl)
                 }
-
             }
+
+            }else{
+                Toast.makeText(context, "Not uploaded", Toast.LENGTH_LONG).show()
+                buttonChoose.isEnabled = true
+
+                count = 0
+    }
     }
         buttonChoose.setOnClickListener {
             count++
@@ -214,5 +225,8 @@ class AddFrament : Fragment() {
                 }
             }
         }
+    }
+    private fun validationFields(): Boolean{
+        return regionEditText.text.toString() != "" && addressEditText.text.toString() != "" && descriptionEditText.text.toString() != "" && spaceEditText.text.toString() != "" && priceEditText.text.toString() != ""
     }
 }

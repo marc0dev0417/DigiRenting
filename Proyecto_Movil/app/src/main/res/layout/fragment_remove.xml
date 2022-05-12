@@ -8,7 +8,7 @@
     >
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerFavorites"
+            android:id="@+id/recycler_remove_house"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="3dp"

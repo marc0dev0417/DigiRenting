@@ -1,5 +1,5 @@
 package com.example.proyecto_movil.model
 
-data class ModelFavoriteHouse(
+data class ModelRemoveHouse(
     var url: String? = null
 )
