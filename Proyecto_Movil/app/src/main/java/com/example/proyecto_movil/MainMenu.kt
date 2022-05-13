@@ -28,6 +28,7 @@ class MainMenu: AppCompatActivity(){
 
         idUser = intent.getIntExtra("userId", 0)
 
+
         supportFragmentManager.beginTransaction().replace(R.id.frament_container,
             HomeFragment()
         ).commit()

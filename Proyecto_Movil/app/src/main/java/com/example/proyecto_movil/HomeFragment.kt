@@ -70,10 +70,6 @@ class HomeFragment : Fragment() {
 
             }
         }
-
         locationsViewPager.setPageTransformer(compositePageTransformer)
-
     }
-
-
 }
