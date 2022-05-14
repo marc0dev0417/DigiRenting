@@ -50,6 +50,8 @@ dependencies {
     implementation 'com.flaviofaria:kenburnsview:1.0.7'
     implementation 'com.github.ibrahimsn98:SmoothBottomBar:1.7.9'
 
+    implementation group: 'at.favre.lib', name: 'bcrypt', version: '0.9.0'
+
 // Import the Firebase BoM
     implementation platform('com.google.firebase:firebase-bom:30.0.0')
 

@@ -7,12 +7,15 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import at.favre.lib.crypto.bcrypt.BCrypt
 import com.android.volley.DefaultRetryPolicy
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import com.example.proyecto_movil.model.User
+import com.example.proyecto_movil.model.Token
 import com.google.gson.Gson
+
+
 
 class LoginActivity : AppCompatActivity() {
 
@@ -20,10 +23,10 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var mRequestQueue: RequestQueue
     private lateinit var buttonLogin: Button
     private lateinit var buttonSignup: Button
-    private lateinit var fieldMail : EditText
+    private lateinit var fieldUsername : EditText
     private lateinit var fieldPassword : EditText
 
-    val url = "http://192.168.50.93:8080/users"
+    val url = "http://192.168.1.36:8080/login"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +34,7 @@ class LoginActivity : AppCompatActivity() {
 
         buttonLogin = findViewById(R.id.bLogin_Login)
         buttonSignup = findViewById(R.id.bSignup_Login)
-        fieldMail = findViewById(R.id.etEmail_Login)
+        fieldUsername = findViewById(R.id.etUsername_login)
         fieldPassword = findViewById(R.id.etPassword_Login)
 
         buttonLogin.setOnClickListener {
@@ -50,7 +53,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun findByMail() {
 
-        val mail = fieldMail.text.toString()
+        val username = fieldUsername.text.toString()
         val password = fieldPassword.text.toString()
 
         gson = Gson()
@@ -58,27 +61,31 @@ class LoginActivity : AppCompatActivity() {
         mRequestQueue = Volley.newRequestQueue(this)
 
         val stringRequest = object: StringRequest(
-            Method.GET, "$url?mail=$mail",
+            Method.GET, "$url?username=$username&password=$password",
             {
 
                     response ->  Log.d("responseMessage", response)
 
-                val user: User? = gson.fromJson(response, User::class.java)
+                val tokenUser: Token? = gson.fromJson(response, Token::class.java)
 
-                if (mail == user?.mail && password == user.password) {
+               val resultVerify = BCrypt.verifyer().verify(password.toCharArray(), tokenUser?.user?.password)
+
+                Log.d("passwordE", resultVerify.verified.toString())
+
+                if (username == tokenUser?.user?.username && resultVerify.verified) {
 
                     Log.d("responseUser", "User is correct")
-                    Toast.makeText(this, "Login correcto", Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext, "Login correcto", Toast.LENGTH_LONG).show()
 
                     val intent = Intent(this, MainMenu::class.java)
-                    intent.putExtra("userId", user.idUser)
+                    intent.putExtra("userId", tokenUser?.user?.idUser)
                     startActivity(intent)
 
                 } else {
 
                     Log.d("responseUser", "User is not correct")
-                    Toast.makeText(this, "Login incorrecto", Toast.LENGTH_LONG).show()
-                    fieldMail.setText("")
+                    Toast.makeText(applicationContext, "Login incorrecto", Toast.LENGTH_LONG).show()
+                    fieldUsername.setText("")
                     fieldPassword.setText("")
 
                 }

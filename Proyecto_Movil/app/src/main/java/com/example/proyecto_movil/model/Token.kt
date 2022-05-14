@@ -5,5 +5,6 @@ data class Token(
     var message: String? = null,
     var token: String? = null,
     var token_expired: Boolean? = null,
-    var expired_date: String? = null
+    var expired_date: String? = null,
+    var user: User? = null
 )
