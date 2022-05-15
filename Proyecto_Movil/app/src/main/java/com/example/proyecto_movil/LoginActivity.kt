@@ -13,9 +13,8 @@ import com.android.volley.RequestQueue
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.proyecto_movil.model.Token
+import com.example.proyecto_movil.sqltoken.ManagerToken
 import com.google.gson.Gson
-
-
 
 class LoginActivity : AppCompatActivity() {
 
@@ -26,11 +25,16 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var fieldUsername : EditText
     private lateinit var fieldPassword : EditText
 
+    //SQLite =>
+    private lateinit var dataBaseSql: ManagerToken
+
     val url = "http://192.168.1.36:8080/login"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        dataBaseSql = ManagerToken(applicationContext)
 
         buttonLogin = findViewById(R.id.bLogin_Login)
         buttonSignup = findViewById(R.id.bSignup_Login)
@@ -38,20 +42,15 @@ class LoginActivity : AppCompatActivity() {
         fieldPassword = findViewById(R.id.etPassword_Login)
 
         buttonLogin.setOnClickListener {
-
-            findByMail()
-
+            findUser()
         }
 
         buttonSignup.setOnClickListener {
-
             startActivity(Intent(this, SignupActivity::class.java))
-
         }
-
     }
 
-    private fun findByMail() {
+    private fun findUser() {
 
         val username = fieldUsername.text.toString()
         val password = fieldPassword.text.toString()
@@ -75,10 +74,13 @@ class LoginActivity : AppCompatActivity() {
                 if (username == tokenUser?.user?.username && resultVerify.verified) {
 
                     Log.d("responseUser", "User is correct")
+                    dataBaseSql.deleteUserWithToken(tokenUser?.user?.idUser!!)
+                    dataBaseSql.addUserWithToken(tokenUser?.user?.idUser!!.toInt(), tokenUser.token!!, tokenUser.expired_date!!, tokenUser?.user?.username!!)
+
                     Toast.makeText(applicationContext, "Login correcto", Toast.LENGTH_LONG).show()
 
                     val intent = Intent(this, MainMenu::class.java)
-                    intent.putExtra("userId", tokenUser?.user?.idUser)
+                    intent.putExtra("indexUser", tokenUser?.user?.idUser)
                     startActivity(intent)
 
                 } else {
@@ -91,10 +93,8 @@ class LoginActivity : AppCompatActivity() {
                 }
 
             }, {
-
                     Log.d("responseMessage", it.toString())
                     Toast.makeText(this, "Login incorrecto", Toast.LENGTH_SHORT).show()
-
             }) {
 
         }

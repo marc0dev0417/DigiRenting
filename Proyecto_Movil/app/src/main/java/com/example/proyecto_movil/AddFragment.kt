@@ -17,13 +17,20 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.proyecto_movil.model.House
 import com.example.proyecto_movil.model.Image
+import com.example.proyecto_movil.sqltoken.ManagerToken
 import com.google.android.gms.tasks.Task
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.storage.*
 import com.google.gson.Gson
 import java.io.File
 
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+
 class AddFragment : Fragment() {
+
+    private lateinit var dataBaseSql: ManagerToken
 
     //List =>
     private val listHouse: MutableList<House> = mutableListOf()
@@ -60,7 +67,7 @@ class AddFragment : Fragment() {
 
     //List to save operations in Firebase and internal storage android =>
     private val listUriImage: MutableList<Uri> = mutableListOf()
-    private val listUrl: MutableList<String> = mutableListOf()
+    private val listUrl: HashSet<String> = HashSet()
 
     private lateinit var bottomNavigationView: BottomNavigationView
 
@@ -73,10 +80,20 @@ class AddFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_add, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?){
         super.onViewCreated(view, savedInstanceState)
 
-       val id: Int = (activity as MainMenu).idUser
+        dataBaseSql = ManagerToken(context)
+
+        val index: Int = (activity as MainMenu).idIndex
+
+        val idUser = dataBaseSql.viewUserWithToken()[index - 1].idUser
+        val tokenUser = dataBaseSql.viewUserWithToken()[index - 1].token
+
+        val ONE_MEGABYTE: Long = 1024 * 1024
+
+        Log.d("id_user_data", idUser.toString())
+        Log.d("tokenUser", tokenUser.toString())
 
         //Client of Firebase =>
         storageReference = FirebaseStorage.getInstance().reference
@@ -97,10 +114,8 @@ class AddFragment : Fragment() {
         spaceEditText = view.findViewById(R.id.space_add_house)
         descriptionEditText = view.findViewById(R.id.description_add_house)
 
-
-
         buttonUpload.setOnClickListener {
-            url = "http://192.168.50.93:8080/users/$id"
+            url = "http://192.168.1.36:8080/users/$idUser"
             var house: House
 
     if(validationFields()){
@@ -111,20 +126,19 @@ class AddFragment : Fragment() {
                 uploadTask =
                     storageReference.child("houses_images/${fileImage.name}").putFile(uriImage)
 
-
                 uploadTask.addOnSuccessListener {
+
                     val firebaseUri: Task<Uri> = it.storage.downloadUrl
 
                     firebaseUri.addOnSuccessListener { uri ->
-                        listUrl.add(uri.toString())
                         listImage.add(Image(null, uri.toString()))
                     }
                 }
-            }
-            uploadTask =
-                storageReference.child("houses_images/${fileImage.name}").putFile(listUriImage[2])
-
+        }
+        uploadTask =
+            storageReference.child("houses_images/${fileImage.name}").putFile(listUriImage[2])
             uploadTask.addOnCompleteListener {
+
                 Toast.makeText(context, "Termino la tarea ${listImage.size}", Toast.LENGTH_SHORT)
                     .show()
 
@@ -134,7 +148,7 @@ class AddFragment : Fragment() {
                     price = priceEditText.text.toString().toDouble(),
                     description = descriptionEditText.text.toString(),
                     space = spaceEditText.text.toString().toInt(),
-                    images = listImage
+                    images = listImage.distinct()
                 )
 
                 mRequestQueue = Volley.newRequestQueue(context)
@@ -144,15 +158,9 @@ class AddFragment : Fragment() {
                 val stringRequest = object : StringRequest(
                     Method.PUT, url,
                     {
-
-                        Log.d("responseMessageHouse", it)
                         Toast.makeText(context, "Se ha añadido", Toast.LENGTH_SHORT).show()
-
                     }, {
-
-                        Log.d("responseMessageHouse", it.toString())
                         Toast.makeText(context, "No se ha añadido", Toast.LENGTH_SHORT).show()
-
                     }) {
 
                     override fun getBodyContentType(): String {
@@ -163,8 +171,15 @@ class AddFragment : Fragment() {
                         return stringJson.toByteArray()
                     }
 
-                }
+                    override fun getHeaders(): MutableMap<String, String> {
+                        val accessTokenApi: HashMap<String, String> = HashMap()
 
+                        accessTokenApi["Authorization"] = "Bearer $tokenUser"
+
+                        return accessTokenApi
+                    }
+
+                }
                 mRequestQueue!!.add(stringRequest!!)
 
 
@@ -202,6 +217,7 @@ class AddFragment : Fragment() {
 
         getResult.launch("image/*")
     }
+
     private val getResult = registerForActivityResult(ActivityResultContracts.GetContent()) {
 
         var imageUri = it
@@ -227,6 +243,6 @@ class AddFragment : Fragment() {
         }
     }
     private fun validationFields(): Boolean{
-        return regionEditText.text.toString() != "" && addressEditText.text.toString() != "" && descriptionEditText.text.toString() != "" && spaceEditText.text.toString() != "" && priceEditText.text.toString() != ""
+        return regionEditText.text.toString() != "" && addressEditText.text.toString() != "" && descriptionEditText.text.toString() != "" && spaceEditText.text.toString() != "" && priceEditText.text.toString() != "" && listUriImage.isNotEmpty()
     }
 }
