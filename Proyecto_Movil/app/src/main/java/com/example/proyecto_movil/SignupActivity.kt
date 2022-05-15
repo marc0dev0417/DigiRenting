@@ -11,7 +11,6 @@ import com.android.volley.RequestQueue
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.proyecto_movil.model.User
-import com.google.android.material.slider.Slider
 import com.google.gson.Gson
 
 class SignupActivity : AppCompatActivity() {

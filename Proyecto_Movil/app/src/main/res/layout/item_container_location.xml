@@ -60,19 +60,12 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:layout_width="16dp"
-                android:layout_height="16dp"
+                android:id="@+id/ivLiked_HomeFragment"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
                 android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_star"
+                android:src="@drawable/ic_baseline_favorite_border_24"
                 app:tint="#FFFFFF" />
-
-            <TextView
-                android:id="@+id/textStarRating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="2dp"
-                android:textColor="#FFFFFF"
-                android:textSize="15sp"/>
 
         </LinearLayout>
 

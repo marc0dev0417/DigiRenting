@@ -1,13 +1,16 @@
 package com.example.proyecto_movil
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
+import android.widget.ImageView
 import androidx.annotation.Nullable
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
+import com.flaviofaria.kenburnsview.KenBurnsView
 import kotlin.math.abs
 
 class HomeFragment : Fragment() {
@@ -24,6 +27,32 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        var liked = false
+        var likedImageView : ImageView = view.findViewById(R.id.ivLiked_HomeFragment)
+
+        likedImageView.setOnClickListener {
+
+            if (!liked) {
+
+                liked = true
+                likedImageView.setImageResource(R.drawable.ic_baseline_favorite_24)
+
+            } else if (liked) {
+
+                liked = false
+                likedImageView.setImageResource(R.drawable.ic_baseline_favorite_border_24)
+
+            }
+
+        }
+
+        var cardImage : KenBurnsView = view.findViewById(R.id.kbvLocation)
+        cardImage.setOnClickListener {
+
+            startActivity(Intent(view.context, CardDetailActivity::class.java))
+
+        }
 
         var locationsViewPager : ViewPager2 = view.findViewById(R.id.locationsViewPager)
 
