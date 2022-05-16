@@ -76,7 +76,6 @@ class ManagerToken(
         var username: String
 
         if(cursor.moveToFirst()){
-
             do {
                 idUser = cursor.getInt(cursor.getColumnIndex(KEY_ID))
                 token = cursor.getString(cursor.getColumnIndex(COL_TOKEN))

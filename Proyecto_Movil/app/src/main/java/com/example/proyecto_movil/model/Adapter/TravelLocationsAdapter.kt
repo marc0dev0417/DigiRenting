@@ -1,15 +1,23 @@
-package com.example.proyecto_movil
+package com.example.proyecto_movil.model.Adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.example.proyecto_movil.R
+import com.example.proyecto_movil.TravelLocation
 import com.flaviofaria.kenburnsview.KenBurnsView
 import com.squareup.picasso.Picasso
 
-class TravelLocationsAdapter( var travelLocations: List<TravelLocation> ) :
+class TravelLocationsAdapter(context: Context?, var travelLocations: List<TravelLocation> ) :
     RecyclerView.Adapter<TravelLocationsAdapter.TravelLocationViewHolder>() {
+
+    private var context = context
+    private var liked = false
 
     class TravelLocationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -17,6 +25,7 @@ class TravelLocationsAdapter( var travelLocations: List<TravelLocation> ) :
         var textTitle : TextView = itemView.findViewById(R.id.textTitle)
         var textLocation : TextView = itemView.findViewById(R.id.textLocation)
         var textStarRating : TextView = itemView.findViewById(R.id.textStarRating)
+        var imageViewLiked: ImageView = itemView.findViewById(R.id.ivLiked_HomeFragment)
 
         fun setLocationData (travelLocation: TravelLocation) {
 
@@ -38,19 +47,27 @@ class TravelLocationsAdapter( var travelLocations: List<TravelLocation> ) :
             false
 
         ))
-
     }
 
     override fun onBindViewHolder(holder: TravelLocationViewHolder, position: Int) {
 
         holder.setLocationData(travelLocations[position])
 
+        holder.imageViewLiked.setOnClickListener {
+            if (!liked) {
+                liked = true
+                Toast.makeText(context, "House added to like", Toast.LENGTH_SHORT).show()
+                holder.imageViewLiked.setImageResource(R.drawable.ic_baseline_favorite_24)
+            } else if (liked) {
+                liked = false
+                Toast.makeText(context, "House not added to like", Toast.LENGTH_SHORT).show()
+                holder.imageViewLiked.setImageResource(R.drawable.ic_baseline_favorite_border_24)
+            }
+        }
     }
 
     override fun getItemCount(): Int {
-
         return travelLocations.size
-
     }
 
 }

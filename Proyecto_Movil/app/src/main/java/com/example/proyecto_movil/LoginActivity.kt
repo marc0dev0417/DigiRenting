@@ -28,7 +28,7 @@ class LoginActivity : AppCompatActivity() {
     //SQLite =>
     private lateinit var dataBaseSql: ManagerToken
 
-    val url = "http://192.168.1.36:8080/login"
+    val url = "http://192.168.50.93:8080/login"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

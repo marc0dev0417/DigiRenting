@@ -1,6 +1,5 @@
-package com.example.proyecto_movil
+package com.example.proyecto_movil.fragment
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import android.widget.ImageView
@@ -10,10 +9,14 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
-import com.flaviofaria.kenburnsview.KenBurnsView
+import com.example.proyecto_movil.R
+import com.example.proyecto_movil.TravelLocation
+import com.example.proyecto_movil.model.Adapter.TravelLocationsAdapter
 import kotlin.math.abs
 
 class HomeFragment : Fragment() {
+
+    private lateinit var likedImageView: ImageView
 
     @Nullable
     override fun onCreateView(
@@ -28,8 +31,11 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+/*
         var liked = false
-        var likedImageView : ImageView = view.findViewById(R.id.ivLiked_HomeFragment)
+
+        likedImageView = view.findViewById(R.id.ivLiked_HomeFragment)
 
         likedImageView.setOnClickListener {
 
@@ -53,6 +59,7 @@ class HomeFragment : Fragment() {
             startActivity(Intent(view.context, CardDetailActivity::class.java))
 
         }
+        */
 
         var locationsViewPager : ViewPager2 = view.findViewById(R.id.locationsViewPager)
 
@@ -82,7 +89,7 @@ class HomeFragment : Fragment() {
 
         var travelLocations : List<TravelLocation> = arrayListOf(travelLocationEiffelTower, travelLocationMountainView, travelLocationTajMahal, travelLocationLakeView)
 
-        locationsViewPager.adapter = TravelLocationsAdapter(travelLocations)
+        locationsViewPager.adapter = TravelLocationsAdapter(context ,travelLocations)
 
         locationsViewPager.clipToPadding = false
         locationsViewPager.clipChildren = false

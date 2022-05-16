@@ -1,4 +1,4 @@
-package com.example.proyecto_movil
+package com.example.proyecto_movil.fragment
 
 import android.content.Intent
 import android.net.Uri
@@ -15,6 +15,8 @@ import androidx.fragment.app.Fragment
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.example.proyecto_movil.MainMenu
+import com.example.proyecto_movil.R
 import com.example.proyecto_movil.model.House
 import com.example.proyecto_movil.model.Image
 import com.example.proyecto_movil.sqltoken.ManagerToken
@@ -23,10 +25,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.storage.*
 import com.google.gson.Gson
 import java.io.File
-
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 
 class AddFragment : Fragment() {
 
@@ -89,8 +87,6 @@ class AddFragment : Fragment() {
 
         val idUser = dataBaseSql.viewUserWithToken()[index - 1].idUser
         val tokenUser = dataBaseSql.viewUserWithToken()[index - 1].token
-
-        val ONE_MEGABYTE: Long = 1024 * 1024
 
         Log.d("id_user_data", idUser.toString())
         Log.d("tokenUser", tokenUser.toString())

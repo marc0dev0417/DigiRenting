@@ -10,8 +10,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="60dp"
         android:text="Imagen de perfil"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -22,6 +24,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="Formato de archivo: JPEG, PNG, GIF (tamaño máximo: 256x256, máx. 10 MB)"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 
@@ -41,7 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="24dp"
-        android:background="#DDDDDD"
+        android:background="#A6A9B6"
         android:orientation="vertical"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
@@ -55,6 +58,7 @@
             android:layout_height="wrap_content"
             android:paddingLeft="16dp"
             android:text="Username"
+            android:textColor="@color/black"
             android:textStyle="bold" />
 
         <TextView
@@ -71,7 +75,7 @@
         android:id="@+id/llMail"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="#DDDDDD"
+        android:background="#A6A9B6"
         android:orientation="vertical"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
@@ -85,6 +89,7 @@
             android:layout_height="wrap_content"
             android:paddingLeft="16dp"
             android:text="Mail"
+            android:textColor="@color/black"
             android:textStyle="bold" />
 
         <TextView
@@ -100,7 +105,7 @@
         android:id="@+id/llAddress"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="#DDDDDD"
+        android:background="#A6A9B6"
         android:orientation="vertical"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
@@ -114,6 +119,7 @@
             android:layout_height="wrap_content"
             android:paddingLeft="16dp"
             android:text="Address"
+            android:textColor="@color/black"
             android:textStyle="bold" />
 
         <TextView

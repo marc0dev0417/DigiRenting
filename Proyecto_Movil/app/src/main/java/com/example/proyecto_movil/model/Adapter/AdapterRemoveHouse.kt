@@ -1,4 +1,4 @@
-package com.example.proyecto_movil.model
+package com.example.proyecto_movil.model.Adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyecto_movil.R
+import com.example.proyecto_movil.model.ModelRemoveHouse
 import com.squareup.picasso.Picasso
 
 class AdapterRemoveHouse(context: Context? = null, listImage: MutableList<ModelRemoveHouse>) : RecyclerView.Adapter<AdapterRemoveHouse.ImageHolder>() {
