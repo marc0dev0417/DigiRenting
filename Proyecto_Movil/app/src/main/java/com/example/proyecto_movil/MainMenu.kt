@@ -29,7 +29,6 @@ class MainMenu: AppCompatActivity(){
 
         Log.d("userDatabase", databaseSQL.viewUserWithToken()[0].token.toString())
 
-
         supportFragmentManager.beginTransaction().replace(R.id.frament_container,
             HomeFragment()
         ).commit()

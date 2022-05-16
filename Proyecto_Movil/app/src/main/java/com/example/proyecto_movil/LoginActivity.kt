@@ -13,8 +13,11 @@ import com.android.volley.RequestQueue
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.proyecto_movil.model.Token
+import com.example.proyecto_movil.model.UserDataSQL
 import com.example.proyecto_movil.sqltoken.ManagerToken
 import com.google.gson.Gson
+import java.text.SimpleDateFormat
+import java.util.*
 
 class LoginActivity : AppCompatActivity() {
 
@@ -27,12 +30,16 @@ class LoginActivity : AppCompatActivity() {
 
     //SQLite =>
     private lateinit var dataBaseSql: ManagerToken
+    private var listUserSql: MutableList<UserDataSQL> = mutableListOf()
+    private var userProfile = UserDataSQL()
 
     val url = "http://192.168.50.93:8080/login"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        var formatDate = SimpleDateFormat("EEEE MMMM d HH:mm:ss z yyyy")
 
         dataBaseSql = ManagerToken(applicationContext)
 
@@ -41,6 +48,27 @@ class LoginActivity : AppCompatActivity() {
         fieldUsername = findViewById(R.id.etUsername_login)
         fieldPassword = findViewById(R.id.etPassword_Login)
 
+        listUserSql = dataBaseSql.viewUserWithToken()
+
+        for(user: UserDataSQL in listUserSql){
+            userProfile.firstname = user.firstname
+            userProfile.lastname = user.lastname
+            userProfile.username = user.username
+            userProfile.mail = user.mail
+            userProfile.address = user.address
+            userProfile.password = user.password
+            userProfile.token = user.token
+            userProfile.tokenExpired = user.tokenExpired
+        }
+
+      if(userProfile.token != null) {
+          var dateExpiredToken = formatDate.parse(userProfile.tokenExpired)
+          var currentDate = formatDate.parse(Date().toString())
+          if (currentDate.before(dateExpiredToken)) {
+              val intent = Intent(this, MainMenu::class.java)
+              startActivity(intent)
+          }
+      }
         buttonLogin.setOnClickListener {
             findUser()
         }
@@ -75,7 +103,7 @@ class LoginActivity : AppCompatActivity() {
 
                     Log.d("responseUser", "User is correct")
                     dataBaseSql.deleteUserWithToken(tokenUser?.user?.idUser!!)
-                    dataBaseSql.addUserWithToken(tokenUser?.user?.idUser!!.toInt(), tokenUser.token!!, tokenUser.expired_date!!, tokenUser?.user?.username!!)
+                    dataBaseSql.addUserWithToken(tokenUser?.user?.idUser!!.toInt(), tokenUser.token!!, tokenUser.expired_date!!,tokenUser?.user?.firstname!!, tokenUser?.user?.lastname!!,tokenUser?.user?.username!!, tokenUser?.user?.mail!!, tokenUser?.user?.address!!, tokenUser?.user?.password!!)
 
                     Toast.makeText(applicationContext, "Login correcto", Toast.LENGTH_LONG).show()
 

@@ -69,5 +69,4 @@ class TravelLocationsAdapter(context: Context?, var travelLocations: List<Travel
     override fun getItemCount(): Int {
         return travelLocations.size
     }
-
 }

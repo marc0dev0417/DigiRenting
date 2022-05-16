@@ -11,19 +11,19 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="60dp"
-        android:text="Imagen de perfil"
+        android:text="Perfil"
         android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvDescImagenPerfil"
+        android:id="@+id/tvProfilePresentation"
         android:layout_width="279dp"
         android:layout_height="38dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="Formato de archivo: JPEG, PNG, GIF (tamaño máximo: 256x256, máx. 10 MB)"
+        android:layout_marginTop="27dp"
+        android:text="Bienvenido a tu datos personales"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
@@ -32,10 +32,11 @@
         android:id="@+id/ivProfile"
         android:layout_width="94dp"
         android:layout_height="83dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="70dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvDescImagenPerfil"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/tvProfilePresentation"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
@@ -129,6 +130,59 @@
             android:paddingStart="22dp"
             android:paddingTop="5dp"
             android:text="Calle Goya 1, Huesca" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llPassword"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#A6A9B6"
+        android:orientation="vertical"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/llAddress">
+
+        <TextView
+            android:id="@+id/tvTitlePassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="16dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:text="Password" />
+
+        <TextView
+            android:id="@+id/tvPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="22dp"
+            android:paddingTop="5dp"
+            android:text="iker123"
+            android:inputType="textPassword"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llBotonChange"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#A6A9B6"
+        android:orientation="vertical"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/llPassword"
+        >
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="22dp"
+            android:paddingTop="5dp"
+            android:text="Change Profile"/>
+
     </LinearLayout>
 
     <View

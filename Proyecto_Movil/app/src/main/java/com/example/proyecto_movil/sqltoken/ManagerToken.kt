@@ -20,12 +20,17 @@ class ManagerToken(
         private const val KEY_ID = "user_id"
         private const val COL_TOKEN = "token"
         private const val COL_TOKEN_EXPIRED = "token_date_expired"
-        private const val COL_USER_NAME = "user_name"
+        private const val COL_FIRSTNAME = "firstname"
+        private const val COL_LASTNAME = "lastname"
+        private const val COL_USER_NAME = "username"
+        private const val COL_MAIL = "mail"
+        private const val COL_ADDRESS = "address"
+        private const val COL_PASSWORD = "password"
+
     }
 
     override fun onCreate(dataBaseSQL: SQLiteDatabase?) {
-      val sqlCreateTable = "CREATE TABLE $TABLE_USER ($KEY_ID INTEGER PRIMARY KEY, $COL_TOKEN TEXT, $COL_TOKEN_EXPIRED TEXT, $COL_USER_NAME TEXT)"
-
+      val sqlCreateTable = "CREATE TABLE $TABLE_USER ($KEY_ID INTEGER PRIMARY KEY, $COL_TOKEN TEXT, $COL_TOKEN_EXPIRED TEXT, $COL_FIRSTNAME TEXT, $COL_LASTNAME TEXT , $COL_USER_NAME TEXT, $COL_MAIL TEXT, $COL_ADDRESS TEXT, $COL_PASSWORD TEXT)"
         // at last we are calling a exec sql
         // method to execute above sql query
         dataBaseSQL?.execSQL(sqlCreateTable)
@@ -35,14 +40,19 @@ class ManagerToken(
         onCreate(dataBaseSQL)
     }
 
-    fun addUserWithToken(keyId: Int, token: String, tokenExpired: String, username: String){
+    fun addUserWithToken(keyId: Int, token: String, tokenExpired: String, firstname: String, lastname: String, username: String, mail: String, address: String, password: String){
         val databaseSQL = this.writableDatabase
         val values = ContentValues()
 
         values.put(KEY_ID, keyId)
         values.put(COL_TOKEN, token)
         values.put(COL_TOKEN_EXPIRED, tokenExpired)
+        values.put(COL_FIRSTNAME, firstname)
+        values.put(COL_LASTNAME, lastname)
         values.put(COL_USER_NAME, username)
+        values.put(COL_MAIL, mail)
+        values.put(COL_ADDRESS, address)
+        values.put(COL_PASSWORD, password)
 
         databaseSQL.insert(TABLE_USER, null, values)
 
@@ -73,16 +83,26 @@ class ManagerToken(
         var idUser: Int
         var token: String
         var tokenExpired: String
+        var firstname: String
+        var lastname: String
         var username: String
+        var mail: String
+        var address: String
+        var password: String
 
         if(cursor.moveToFirst()){
             do {
                 idUser = cursor.getInt(cursor.getColumnIndex(KEY_ID))
                 token = cursor.getString(cursor.getColumnIndex(COL_TOKEN))
                 tokenExpired = cursor.getString(cursor.getColumnIndex(COL_TOKEN_EXPIRED))
+                firstname = cursor.getString(cursor.getColumnIndex(COL_FIRSTNAME))
+                lastname = cursor.getString(cursor.getColumnIndex(COL_LASTNAME))
                 username = cursor.getString(cursor.getColumnIndex(COL_USER_NAME))
+                mail = cursor.getString(cursor.getColumnIndex(COL_MAIL))
+                address = cursor.getString(cursor.getColumnIndex(COL_ADDRESS))
+                password = cursor.getString(cursor.getColumnIndex(COL_PASSWORD))
 
-                listUserDataSQL.add(UserDataSQL(idUser, username, token, tokenExpired))
+                listUserDataSQL.add(UserDataSQL(idUser,firstname,lastname,username,mail,address,password,token,tokenExpired))
             }while (cursor.moveToNext())
         }
         return listUserDataSQL
