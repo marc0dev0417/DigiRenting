@@ -16,6 +16,7 @@ import com.example.proyecto_movil.model.Token
 import com.example.proyecto_movil.model.UserDataSQL
 import com.example.proyecto_movil.sqltoken.ManagerToken
 import com.google.gson.Gson
+import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -39,7 +40,10 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        var formatDate = SimpleDateFormat("EEEE MMMM d HH:mm:ss z yyyy")
+        var dateFormatMedium = DateFormat.getDateInstance(DateFormat.MEDIUM)
+        var currentDate = dateFormatMedium.format(Date())
+
+        var indexRegisterUser = SignupActivity().indexRegister
 
         dataBaseSql = ManagerToken(applicationContext)
 
@@ -48,27 +52,7 @@ class LoginActivity : AppCompatActivity() {
         fieldUsername = findViewById(R.id.etUsername_login)
         fieldPassword = findViewById(R.id.etPassword_Login)
 
-        listUserSql = dataBaseSql.viewUserWithToken()
 
-        for(user: UserDataSQL in listUserSql){
-            userProfile.firstname = user.firstname
-            userProfile.lastname = user.lastname
-            userProfile.username = user.username
-            userProfile.mail = user.mail
-            userProfile.address = user.address
-            userProfile.password = user.password
-            userProfile.token = user.token
-            userProfile.tokenExpired = user.tokenExpired
-        }
-
-      if(userProfile.token != null) {
-          var dateExpiredToken = formatDate.parse(userProfile.tokenExpired)
-          var currentDate = formatDate.parse(Date().toString())
-          if (currentDate.before(dateExpiredToken)) {
-              val intent = Intent(this, MainMenu::class.java)
-              startActivity(intent)
-          }
-      }
         buttonLogin.setOnClickListener {
             findUser()
         }
@@ -78,6 +62,34 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+
+
+        var dateFormatMedium = DateFormat.getDateInstance(DateFormat.MEDIUM)
+        var currentDate = dateFormatMedium.format(Date())
+
+        listUserSql = dataBaseSql.viewUserWithToken()
+
+        listUserSql.filter { item -> item.username ==  fieldUsername.toString()}
+
+        if(listUserSql.isNotEmpty()) {
+            userProfile = listUserSql[0]
+            if (userProfile.token != null) {
+                var dateExpiredToken = dateFormatMedium.parse(userProfile.tokenExpired)
+                var dateSystem = dateFormatMedium.parse(currentDate)
+                if (dateSystem.before(dateExpiredToken)) {
+                    val intent = Intent(this, MainMenu::class.java)
+                    startActivity(intent)
+                } else {
+                    dataBaseSql.deleteUserWithToken(userProfile.idUser!!)
+                }
+            }
+        }
+    }
+    fun goingLogin(){
+        startActivity(Intent(applicationContext, LoginActivity::class.java))
+    }
     private fun findUser() {
 
         val username = fieldUsername.text.toString()
@@ -102,7 +114,6 @@ class LoginActivity : AppCompatActivity() {
                 if (username == tokenUser?.user?.username && resultVerify.verified) {
 
                     Log.d("responseUser", "User is correct")
-                    dataBaseSql.deleteUserWithToken(tokenUser?.user?.idUser!!)
                     dataBaseSql.addUserWithToken(tokenUser?.user?.idUser!!.toInt(), tokenUser.token!!, tokenUser.expired_date!!,tokenUser?.user?.firstname!!, tokenUser?.user?.lastname!!,tokenUser?.user?.username!!, tokenUser?.user?.mail!!, tokenUser?.user?.address!!, tokenUser?.user?.password!!)
 
                     Toast.makeText(applicationContext, "Login correcto", Toast.LENGTH_LONG).show()

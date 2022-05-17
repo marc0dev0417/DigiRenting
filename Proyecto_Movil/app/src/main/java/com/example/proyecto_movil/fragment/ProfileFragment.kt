@@ -1,13 +1,17 @@
 package com.example.proyecto_movil.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import com.example.proyecto_movil.LoginActivity
+import com.example.proyecto_movil.MainMenu
 import com.example.proyecto_movil.R
 import com.example.proyecto_movil.model.UserDataSQL
 import com.example.proyecto_movil.sqltoken.ManagerToken
@@ -21,6 +25,7 @@ class ProfileFragment : Fragment(){
 
     //Components =>
     private lateinit var imageViewProfile: ImageView
+    private lateinit var buttonCloseSession: Button
 
     private lateinit var tvProfilePresentation: TextView
     private lateinit var tvUsername: TextView
@@ -41,22 +46,16 @@ class ProfileFragment : Fragment(){
 
         dataBaseSql = ManagerToken(context)
 
-       // var index = (activity as MainMenu).idIndex
+        var index = (activity as MainMenu).idIndex
 
         listUserSql = dataBaseSql.viewUserWithToken()
 
       //  listUserSql.removeAt(0)
+        listUserSql.filter { item -> item.idUser == index}
 
-        for(user: UserDataSQL in listUserSql){
-                userProfile.firstname = user.firstname
-                userProfile.lastname = user.lastname
-                userProfile.username = user.username
-                userProfile.mail = user.mail
-                userProfile.address = user.address
-                userProfile.password = user.password
-        }
+        userProfile = listUserSql[0]
 
-        Log.d("::", userProfile.username.toString())
+        Log.d("profileUsername", userProfile.username.toString())
         imageViewProfile = view.findViewById(R.id.ivProfile)
 
         tvProfilePresentation = view.findViewById(R.id.tvProfilePresentation)
@@ -64,6 +63,13 @@ class ProfileFragment : Fragment(){
         tvMail = view.findViewById(R.id.tvAddress)
         tvAddress = view.findViewById(R.id.tvAddress)
         tvPassword = view.findViewById(R.id.tvPassword)
+
+        buttonCloseSession = view.findViewById(R.id.button_cerrar_sesion)
+
+        buttonCloseSession.setOnClickListener {
+            dataBaseSql.deleteUserWithToken(userProfile.idUser!!)
+            startActivity(Intent(context, LoginActivity::class.java))
+        }
 
         imageViewProfile.setImageResource(R.drawable.ic_baseline_person_24)
 
@@ -73,7 +79,6 @@ class ProfileFragment : Fragment(){
         tvMail.text = userProfile.mail
         tvAddress.text = userProfile.address
         tvPassword.text = userProfile.password
-
 
     }
 }

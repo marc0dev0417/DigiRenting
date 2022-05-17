@@ -22,11 +22,20 @@
         android:layout_width="279dp"
         android:layout_height="38dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="27dp"
+        android:layout_marginTop="8dp"
         android:text="Bienvenido a tu datos personales"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+    <Button
+        android:id="@+id/button_cerrar_sesion"
+        android:layout_width="121dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="136dp"
+        android:text="Button"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="93dp" />
 
     <ImageView
         android:id="@+id/ivProfile"

@@ -28,7 +28,10 @@ class SignupActivity : AppCompatActivity() {
     private lateinit var fieldAddress : EditText
     private lateinit var fieldPassword : EditText
 
-    val url = "http://192.168.1.36:8080/register"
+    private lateinit var userSaveFromJSON: User
+
+    val url = "http://192.168.50.93:8080/register"
+    var indexRegister = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,7 +75,13 @@ class SignupActivity : AppCompatActivity() {
         val stringRequest = object: StringRequest(Method.POST, url,
             {
                     Log.d("responseMessage", it)
+
+                    userSaveFromJSON = gson.fromJson(it, User::class.java)
+
+                    indexRegister = userSaveFromJSON.idUser!!.toInt()
+
                     var intent = Intent(this, SliderActivity::class.java)
+
                     startActivity(intent)
 
             }, {

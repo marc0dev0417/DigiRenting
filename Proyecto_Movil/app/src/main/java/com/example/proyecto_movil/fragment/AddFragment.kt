@@ -19,6 +19,7 @@ import com.example.proyecto_movil.MainMenu
 import com.example.proyecto_movil.R
 import com.example.proyecto_movil.model.House
 import com.example.proyecto_movil.model.Image
+import com.example.proyecto_movil.model.UserDataSQL
 import com.example.proyecto_movil.sqltoken.ManagerToken
 import com.google.android.gms.tasks.Task
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -33,6 +34,7 @@ class AddFragment : Fragment() {
     //List =>
     private val listHouse: MutableList<House> = mutableListOf()
     private val listImage: MutableList<Image> = mutableListOf()
+    private var listUserSql: MutableList<UserDataSQL> = mutableListOf()
 
     //Buttons =>
     private lateinit var buttonChoose: Button
@@ -62,6 +64,7 @@ class AddFragment : Fragment() {
     private lateinit var mRequestQueue: RequestQueue
     private lateinit var gson: Gson
     private lateinit var url: String
+    private  var userProfile: UserDataSQL = UserDataSQL()
 
     //List to save operations in Firebase and internal storage android =>
     private val listUriImage: MutableList<Uri> = mutableListOf()
@@ -85,11 +88,16 @@ class AddFragment : Fragment() {
 
         val index: Int = (activity as MainMenu).idIndex
 
-        val idUser = dataBaseSql.viewUserWithToken()[index - 1].idUser
-        val tokenUser = dataBaseSql.viewUserWithToken()[index - 1].token
+        Log.d("indexAdd", index.toString())
+        listUserSql = dataBaseSql.viewUserWithToken()
 
-        Log.d("id_user_data", idUser.toString())
-        Log.d("tokenUser", tokenUser.toString())
+        listUserSql.map {
+            Log.d("userList", "${it.username.toString()} index ${it.idUser.toString()}")
+            userProfile = it
+        }
+
+
+        Log.d("tokenUser", userProfile.token.toString())
 
         //Client of Firebase =>
         storageReference = FirebaseStorage.getInstance().reference
@@ -111,7 +119,7 @@ class AddFragment : Fragment() {
         descriptionEditText = view.findViewById(R.id.description_add_house)
 
         buttonUpload.setOnClickListener {
-            url = "http://192.168.1.36:8080/users/$idUser"
+            url = "http://192.168.1.36:8080/users/$index"
             var house: House
 
     if(validationFields()){
@@ -170,7 +178,7 @@ class AddFragment : Fragment() {
                     override fun getHeaders(): MutableMap<String, String> {
                         val accessTokenApi: HashMap<String, String> = HashMap()
 
-                        accessTokenApi["Authorization"] = "Bearer $tokenUser"
+                        accessTokenApi["Authorization"] = "Bearer ${userProfile.token}"
 
                         return accessTokenApi
                     }
