@@ -22,7 +22,6 @@ import com.example.proyecto_movil.model.Image
 import com.example.proyecto_movil.model.UserDataSQL
 import com.example.proyecto_movil.sqltoken.ManagerToken
 import com.google.android.gms.tasks.Task
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.storage.*
 import com.google.gson.Gson
 import java.io.File
@@ -32,7 +31,7 @@ class AddFragment : Fragment() {
     private lateinit var dataBaseSql: ManagerToken
 
     //List =>
-    private val listHouse: MutableList<House> = mutableListOf()
+
     private val listImage: MutableList<Image> = mutableListOf()
     private var listUserSql: MutableList<UserDataSQL> = mutableListOf()
 
@@ -70,7 +69,7 @@ class AddFragment : Fragment() {
     private val listUriImage: MutableList<Uri> = mutableListOf()
     private val listUrl: HashSet<String> = HashSet()
 
-    private lateinit var bottomNavigationView: BottomNavigationView
+
 
     @Nullable
     override fun onCreateView(
@@ -119,7 +118,7 @@ class AddFragment : Fragment() {
         descriptionEditText = view.findViewById(R.id.description_add_house)
 
         buttonUpload.setOnClickListener {
-            url = "http://192.168.1.36:8080/users/$index"
+            url = "http://192.168.50.93:8080/users/${userProfile.idUser}"
             var house: House
 
     if(validationFields()){
@@ -184,12 +183,8 @@ class AddFragment : Fragment() {
                     }
 
                 }
-                mRequestQueue!!.add(stringRequest!!)
+                mRequestQueue.add(stringRequest)
 
-
-                for (imageUrl: String in listUrl) {
-                    Log.d("url", imageUrl)
-                }
             }
 
             }else{
@@ -216,9 +211,6 @@ class AddFragment : Fragment() {
         }
     }
     private fun selectedImage() {
-
-        val intentGallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-
         getResult.launch("image/*")
     }
 
