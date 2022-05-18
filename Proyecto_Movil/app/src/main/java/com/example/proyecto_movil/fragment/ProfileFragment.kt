@@ -60,7 +60,7 @@ class ProfileFragment : Fragment(){
 
         tvProfilePresentation = view.findViewById(R.id.tvProfilePresentation)
         tvUsername = view.findViewById(R.id.tvUsername)
-        tvMail = view.findViewById(R.id.tvAddress)
+        tvMail = view.findViewById(R.id.tvMail)
         tvAddress = view.findViewById(R.id.tvAddress)
         tvPassword = view.findViewById(R.id.tvPassword)
 

@@ -30,7 +30,7 @@ class SignupActivity : AppCompatActivity() {
 
     private lateinit var userSaveFromJSON: User
 
-    val url = "http://192.168.50.93:8080/register"
+    val url = "http://192.168.87.192:8080/register"
     var indexRegister = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
