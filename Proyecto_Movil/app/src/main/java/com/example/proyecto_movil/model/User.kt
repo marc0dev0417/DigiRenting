@@ -8,6 +8,6 @@ data class User(
     var username:String? = null,
     var mail:String? = null,
     var password:String? = null,
-    var houses: MutableList<House>? = null,
-    var houseLikes: MutableList<House>? = null
+    var houses: MutableList<House>? = mutableListOf(),
+    var houseLikes: MutableList<House>? = mutableListOf()
 )

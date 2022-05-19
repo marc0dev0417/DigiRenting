@@ -9,5 +9,5 @@ data class House(
     var price:Double? = null,
     var description:String? = null,
     var space:Int? = null,
-    var images: List<Image>? = null
+    var images: MutableList<Image>? = mutableListOf()
 )

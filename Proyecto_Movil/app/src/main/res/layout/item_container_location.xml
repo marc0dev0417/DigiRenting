@@ -37,7 +37,7 @@
                 app:tint="#FFFFFF" />
 
             <TextView
-                android:id="@+id/textStarRating"
+                android:id="@+id/textPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="2dp"
@@ -74,7 +74,7 @@
             android:layout_height="0dp"
             android:background="#D6000000"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="@id/textTitle" />
+            app:layout_constraintTop_toTopOf="@id/textRegion" />
 
         <ImageView
             android:id="@+id/imageLocation"
@@ -84,13 +84,13 @@
             android:contentDescription="@string/app_name"
             android:src="@drawable/ic_location"
             app:tint="#FFFFFF"
-            app:layout_constraintBottom_toBottomOf="@id/textLocation"
+            app:layout_constraintBottom_toBottomOf="@id/textAddress"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/textLocation"/>
+            app:layout_constraintTop_toTopOf="@id/textAddress"/>
 
 
         <TextView
-            android:id="@+id/textLocation"
+            android:id="@+id/textAddress"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
@@ -103,7 +103,7 @@
             app:layout_constraintStart_toEndOf="@id/imageLocation"/>
 
         <TextView
-            android:id="@+id/textTitle"
+            android:id="@+id/textRegion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"

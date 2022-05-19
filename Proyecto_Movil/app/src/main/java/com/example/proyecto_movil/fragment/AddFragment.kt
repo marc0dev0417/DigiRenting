@@ -118,7 +118,7 @@ class AddFragment : Fragment() {
         descriptionEditText = view.findViewById(R.id.description_add_house)
 
         buttonUpload.setOnClickListener {
-            url = "http://192.168.50.93:8080/users/${userProfile.idUser}"
+            url = "http://192.168.87.192:8080/users/${userProfile.idUser}"
             var house: House
 
     if(validationFields()){
@@ -151,7 +151,7 @@ class AddFragment : Fragment() {
                     price = priceEditText.text.toString().toDouble(),
                     description = descriptionEditText.text.toString(),
                     space = spaceEditText.text.toString().toInt(),
-                    images = listImage.distinct()
+                    images = listImage
                 )
 
                 mRequestQueue = Volley.newRequestQueue(context)

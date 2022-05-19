@@ -1,22 +1,47 @@
 package com.example.proyecto_movil.fragment
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.annotation.Nullable
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
+import at.favre.lib.crypto.bcrypt.BCrypt
+import com.android.volley.DefaultRetryPolicy
+import com.android.volley.RequestQueue
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
+import com.example.proyecto_movil.MainMenu
 import com.example.proyecto_movil.R
-import com.example.proyecto_movil.TravelLocation
-import com.example.proyecto_movil.model.Adapter.TravelLocationsAdapter
+import com.example.proyecto_movil.model.Adapter.HouseLocationsAdapter
+import com.example.proyecto_movil.model.HouseLocation
+import com.example.proyecto_movil.model.Token
+import com.example.proyecto_movil.model.User
+import com.example.proyecto_movil.model.UserDataSQL
+import com.example.proyecto_movil.sqltoken.ManagerToken
+import com.google.gson.Gson
 import kotlin.math.abs
 
 class HomeFragment : Fragment() {
 
     private lateinit var likedImageView: ImageView
+
+    private lateinit var gson: Gson
+    private lateinit var mRequestQueue: RequestQueue
+
+    private lateinit var databaseSql: ManagerToken
+    private lateinit var userDataSQL: UserDataSQL
+
+    lateinit var locationsViewPager : ViewPager2
+
+    lateinit var userToMutableList: MutableList<HouseLocation>
 
     @Nullable
     override fun onCreateView(
@@ -32,27 +57,16 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-/*
-        var liked = false
+        userToMutableList = mutableListOf()
 
-        likedImageView = view.findViewById(R.id.ivLiked_HomeFragment)
+        databaseSql = ManagerToken(context)
 
-        likedImageView.setOnClickListener {
+        userDataSQL = databaseSql.viewUserWithToken()[0]
 
-            if (!liked) {
+        Log.d("usernameHome", userDataSQL.username.toString())
 
-                liked = true
-                likedImageView.setImageResource(R.drawable.ic_baseline_favorite_24)
 
-            } else if (liked) {
-
-                liked = false
-                likedImageView.setImageResource(R.drawable.ic_baseline_favorite_border_24)
-
-            }
-
-        }
-
+        /*
         var cardImage : KenBurnsView = view.findViewById(R.id.kbvLocation)
         cardImage.setOnClickListener {
 
@@ -61,35 +75,16 @@ class HomeFragment : Fragment() {
         }
         */
 
-        var locationsViewPager : ViewPager2 = view.findViewById(R.id.locationsViewPager)
+         locationsViewPager = view.findViewById(R.id.locationsViewPager)
 
-        var travelLocationEiffelTower = TravelLocation()
-        travelLocationEiffelTower.imageUrl = "https://media.revistaad.es/photos/623afa27430e667b20addca1/master/w_1600%2Cc_limit/142198198"
-        travelLocationEiffelTower.title = "France"
-        travelLocationEiffelTower.location = "Eiffel Tower"
-        travelLocationEiffelTower.starRating = 4.8f
 
-        var travelLocationMountainView = TravelLocation()
-        travelLocationMountainView.imageUrl = "https://www.tourhero.com/en/magazine/wp-content/uploads/2020/09/hikes-in-indonesia-e1615437029289.jpg"
-        travelLocationMountainView.title = "Indonesia"
-        travelLocationMountainView.location = "Mountain View"
-        travelLocationMountainView.starRating = 4.5f
+        findHouseAPI("http://192.168.87.192:8080/users", userDataSQL.token.toString())
 
-        var travelLocationTajMahal = TravelLocation()
-        travelLocationTajMahal.imageUrl = "https://1.bp.blogspot.com/-UbRzd9au3c0/X8laTtqta3I/AAAAAAAAKxU/xLlM9LGEb_4-oGK__ZhGGudxXjDYdYhaQCLcBGAsYHQ/s800/taj%2Bmahal.jpg"
-        travelLocationTajMahal.title = "India"
-        travelLocationTajMahal.location = "Taj Mahal"
-        travelLocationTajMahal.starRating = 4.3f
 
-        var travelLocationLakeView = TravelLocation()
-        travelLocationLakeView.imageUrl = "https://cdn.thecrazytourist.com/wp-content/uploads/2018/09/ccimage-shutterstock_601048877.jpg"
-        travelLocationLakeView.title = "Canada"
-        travelLocationLakeView.location = "Lake View"
-        travelLocationLakeView.starRating = 4.2f
+        locationsViewPager.adapter = HouseLocationsAdapter(context, userToMutableList)
 
-        var travelLocations : List<TravelLocation> = arrayListOf(travelLocationEiffelTower, travelLocationMountainView, travelLocationTajMahal, travelLocationLakeView)
 
-        locationsViewPager.adapter = TravelLocationsAdapter(context ,travelLocations)
+
 
         locationsViewPager.clipToPadding = false
         locationsViewPager.clipChildren = false
@@ -107,5 +102,51 @@ class HomeFragment : Fragment() {
             }
         }
         locationsViewPager.setPageTransformer(compositePageTransformer)
+
     }
+
+    private fun findHouseAPI(url: String, userToken: String){
+        gson = Gson()
+
+
+        val stringRequest = object: StringRequest(
+            Method.GET, "$url",
+            { it ->
+                val listUser: Array<User> = gson.fromJson(it, Array<User>::class.java)
+
+                for(userItem in listUser){
+                    for(house in userItem.houses!!){
+                            userToMutableList.add(HouseLocation(userItem.username ,house.images!![0].url, house.images!![1].url, house.images!![2].url, house.region, house.address, house.price))
+                        for (image in house.images!!){
+                            Log.d("ima", image.url.toString())
+                        }
+                        Log.d("ima", "---------------------------------")  //En cada card Onclick me da su indice
+                    }
+                }
+
+                locationsViewPager.adapter?.notifyDataSetChanged()
+
+            }, {
+
+            }) {
+            override fun getBodyContentType(): String {
+                return "application/json"
+            }
+
+            override fun getHeaders(): MutableMap<String, String> {
+                val accessTokenApi: HashMap<String, String> = HashMap()
+
+                accessTokenApi["Authorization"] = "Bearer $userToken"
+
+                return accessTokenApi
+            }
+        }
+        stringRequest.retryPolicy = DefaultRetryPolicy(20000,
+            DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+            DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
+        mRequestQueue = Volley.newRequestQueue(context)
+        mRequestQueue.add(stringRequest)
+    }
+
+
 }
