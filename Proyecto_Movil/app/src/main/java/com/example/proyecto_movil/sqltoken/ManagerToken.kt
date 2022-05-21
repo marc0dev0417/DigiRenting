@@ -7,6 +7,7 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteException
 import android.database.sqlite.SQLiteOpenHelper
+import com.example.proyecto_movil.model.FavoriteDataSQL
 import com.example.proyecto_movil.model.UserDataSQL
 
 class ManagerToken(
@@ -27,16 +28,28 @@ class ManagerToken(
         private const val COL_ADDRESS = "address"
         private const val COL_PASSWORD = "password"
 
+        private const val TABLE_HOUSE = "favorites"
+        private const val KEY_ID_HOUSE = "house_id"
+        private const val COL_OWNER = "owner"
+        private const val COL_URL = "url"
+        private const val COL_REGION = "region"
+        private const val COL_PRICE = "price"
     }
 
     override fun onCreate(dataBaseSQL: SQLiteDatabase?) {
-      val sqlCreateTable = "CREATE TABLE $TABLE_USER ($KEY_ID INTEGER PRIMARY KEY, $COL_TOKEN TEXT, $COL_TOKEN_EXPIRED TEXT, $COL_FIRSTNAME TEXT, $COL_LASTNAME TEXT , $COL_USER_NAME TEXT, $COL_MAIL TEXT, $COL_ADDRESS TEXT, $COL_PASSWORD TEXT)"
+        val sqlCreateTable = "CREATE TABLE $TABLE_USER ($KEY_ID INTEGER PRIMARY KEY, $COL_TOKEN TEXT, $COL_TOKEN_EXPIRED TEXT, $COL_FIRSTNAME TEXT, $COL_LASTNAME TEXT , $COL_USER_NAME TEXT, $COL_MAIL TEXT, $COL_ADDRESS TEXT, $COL_PASSWORD TEXT)"
         // at last we are calling a exec sql
         // method to execute above sql query
         dataBaseSQL?.execSQL(sqlCreateTable)
+
+        val sqlCreateTableFavorite = "CREATE TABLE $TABLE_HOUSE ($KEY_ID_HOUSE INTEGER PRIMARY KEY, $COL_OWNER TEXT, $COL_URL TEXT, $COL_REGION TEXT, $COL_PRICE DOUBLE, FOREIGN KEY ($KEY_ID) REFERENCES $TABLE_USER($KEY_ID))"
+        dataBaseSQL?.execSQL(sqlCreateTableFavorite)
     }
     override fun onUpgrade(dataBaseSQL: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
         dataBaseSQL?.execSQL("DROP TABLE IF EXISTS $TABLE_USER")
+        onCreate(dataBaseSQL)
+
+        dataBaseSQL?.execSQL("DROP TABLE IF EXISTS $TABLE_HOUSE")
         onCreate(dataBaseSQL)
     }
 
@@ -58,10 +71,34 @@ class ManagerToken(
 
         databaseSQL.close()
     }
-    fun deleteUserWithToken(keyId: Int): Boolean{
+    fun addFavorite(houseId: Int, owner: String, url: String, region: String, price: Double, userId: Int) {
+
+        val dataBaseSQL = this.writableDatabase
+        val values = ContentValues()
+
+        values.put(KEY_ID_HOUSE, houseId)
+        values.put(COL_OWNER, owner)
+        values.put(COL_URL, url)
+        values.put(COL_REGION, region)
+        values.put(COL_PRICE, price)
+        values.put(KEY_ID, userId)
+
+        dataBaseSQL.insert(TABLE_HOUSE, null, values)
+        dataBaseSQL.close()
+    }
+    fun deleteFavorite(keyHouseId: Int): Boolean{
 
         val dataBaseSQL = this.writableDatabase
 
+        return dataBaseSQL.delete(TABLE_HOUSE, "$KEY_ID_HOUSE = $keyHouseId", null) > 0
+    }
+    fun updateUserWithToken(token: String, tokenExpired: String, firstname: String, lastname: String, username: String, mail: String, address: String, password: String){
+      val databaseSQL = this.readableDatabase
+
+      databaseSQL.execSQL("UPDATE $TABLE_USER SET $COL_TOKEN = $token, $COL_TOKEN_EXPIRED = $tokenExpired, $COL_FIRSTNAME = $firstname, $COL_LASTNAME = $lastname, $COL_USER_NAME = $username, $COL_MAIL = $mail, $COL_ADDRESS = $address, $COL_PASSWORD = $password")
+    }
+    fun deleteUserWithToken(keyId: Int): Boolean{
+        val dataBaseSQL = this.writableDatabase
         return dataBaseSQL.delete(TABLE_USER, "$KEY_ID = $keyId", null) > 0
     }
 
@@ -106,5 +143,42 @@ class ManagerToken(
             }while (cursor.moveToNext())
         }
         return listUserDataSQL
+    }
+    @SuppressLint("Range")
+    fun viewHouseFavorite(): MutableList<FavoriteDataSQL>{
+        var listHouseFavorite: MutableList<FavoriteDataSQL> = mutableListOf()
+
+        val selectQuery = "SELECT * FROM $TABLE_HOUSE"
+        val dataBaseSQL = this.readableDatabase
+
+        var cursor: Cursor? = null
+
+        try{
+            cursor = dataBaseSQL.rawQuery(selectQuery, null)
+        }catch (e: SQLiteException) {
+            dataBaseSQL.execSQL(selectQuery)
+            return ArrayList()
+        }
+        var keyIdHouse: Int
+        var owner: String
+        var url: String
+        var region: String
+        var price: Double
+        var keyUserId: Int
+
+        if(cursor.moveToFirst()){
+            do {
+                keyIdHouse = cursor.getInt(cursor.getColumnIndex(KEY_ID_HOUSE))
+                owner = cursor.getString(cursor.getColumnIndex(COL_OWNER))
+                url = cursor.getString(cursor.getColumnIndex(COL_URL))
+                region = cursor.getString(cursor.getColumnIndex(COL_REGION))
+                price = cursor.getDouble(cursor.getColumnIndex(COL_PRICE))
+                keyUserId = cursor.getInt(cursor.getColumnIndex(KEY_ID))
+
+                listHouseFavorite.add(FavoriteDataSQL(keyIdHouse, owner, url, region, price, keyUserId))
+
+            }while (cursor.moveToNext())
+        }
+        return listHouseFavorite
     }
 }

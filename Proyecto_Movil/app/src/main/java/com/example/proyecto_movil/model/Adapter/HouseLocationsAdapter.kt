@@ -55,7 +55,7 @@ class HouseLocationsAdapter(context: Context?, private var imageHouseList: Mutab
 
         holder.kbvLocation?.setOnClickListener {
             Toast.makeText(context, "hola funciono $position", Toast.LENGTH_SHORT).show()
-            Log.d("xD1", imageHouseList[position].url1.toString()+" "+imageHouseList[position].url2+ " owner "+imageHouseList[position].owner) //Soy el mejor :)
+            Log.d("xD1", imageHouseList[position].url1.toString()+" "+imageHouseList[position].url2+ " owner "+imageHouseList[position].owner)
         }
 
         holder.imageViewLiked?.setOnClickListener {
