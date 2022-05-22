@@ -118,7 +118,7 @@ class AddFragment : Fragment() {
         descriptionEditText = view.findViewById(R.id.description_add_house)
 
         buttonUpload.setOnClickListener {
-            url = "http://192.168.87.192:8080/users/${userProfile.idUser}"
+            url = "http://192.168.1.139:8080/users/${userProfile.idUser}"
             var house: House
 
     if(validationFields()){

@@ -18,7 +18,7 @@ class AdapterRemoveHouse(context: Context? = null, listImage: MutableList<ModelR
 
     class ImageHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var imageView: ImageView? = null
-        var buttonRemove: Button? = null
+        var buttonRemove: ImageView? = null
 
         init {
         imageView = itemView.findViewById(R.id.image_house_url)
@@ -37,7 +37,6 @@ class AdapterRemoveHouse(context: Context? = null, listImage: MutableList<ModelR
 
         holder.buttonRemove?.setOnClickListener {
             Toast.makeText(context, "hello i am position $position", Toast.LENGTH_SHORT).show()
-
 
             var newPosition = position
 

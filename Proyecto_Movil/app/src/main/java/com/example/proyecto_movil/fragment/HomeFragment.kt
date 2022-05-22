@@ -56,7 +56,6 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         userToMutableList = mutableListOf()
 
         databaseSql = ManagerToken(context)
@@ -65,27 +64,12 @@ class HomeFragment : Fragment() {
 
         Log.d("usernameHome", userDataSQL.username.toString())
 
-
-        /*
-        var cardImage : KenBurnsView = view.findViewById(R.id.kbvLocation)
-        cardImage.setOnClickListener {
-
-            startActivity(Intent(view.context, CardDetailActivity::class.java))
-
-        }
-        */
-
          locationsViewPager = view.findViewById(R.id.locationsViewPager)
 
 
         findHouseAPI("http://192.168.87.192:8080/users", userDataSQL.token.toString())
 
-
         locationsViewPager.adapter = HouseLocationsAdapter(context, userToMutableList)
-
-
-
-
         locationsViewPager.clipToPadding = false
         locationsViewPager.clipChildren = false
         locationsViewPager.offscreenPageLimit = 3
