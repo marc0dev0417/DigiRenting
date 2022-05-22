@@ -33,7 +33,7 @@
         android:layout_width="121dp"
         android:layout_height="39dp"
         android:layout_marginTop="136dp"
-        android:text="Button"
+        android:text="Close"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="93dp" />
 
@@ -52,7 +52,7 @@
     <LinearLayout
         android:id="@+id/llUsername"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="70dp"
         android:layout_marginTop="24dp"
         android:background="#A6A9B6"
         android:orientation="vertical"
@@ -67,24 +67,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="16dp"
+
             android:text="Username"
             android:textColor="@color/black"
             android:textStyle="bold" />
 
-        <TextView
+        <EditText
             android:id="@+id/tvUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingStart="22dp"
             android:paddingTop="5dp"
-            android:text="Docker" />
+            android:text="Docker"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/llMail"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="70dp"
         android:background="#A6A9B6"
         android:orientation="vertical"
         android:paddingTop="5dp"
@@ -102,7 +103,7 @@
             android:textColor="@color/black"
             android:textStyle="bold" />
 
-        <TextView
+        <EditText
             android:id="@+id/tvMail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -114,7 +115,7 @@
     <LinearLayout
         android:id="@+id/llAddress"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="70dp"
         android:background="#A6A9B6"
         android:orientation="vertical"
         android:paddingTop="5dp"
@@ -132,7 +133,7 @@
             android:textColor="@color/black"
             android:textStyle="bold" />
 
-        <TextView
+        <EditText
             android:id="@+id/tvAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -144,7 +145,7 @@
     <LinearLayout
         android:id="@+id/llPassword"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="70dp"
         android:background="#A6A9B6"
         android:orientation="vertical"
         android:paddingTop="5dp"
@@ -162,7 +163,7 @@
             android:textStyle="bold"
             android:text="Password" />
 
-        <TextView
+        <EditText
             android:id="@+id/tvPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -175,7 +176,7 @@
     <LinearLayout
         android:id="@+id/llBotonChange"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="70dp"
         android:background="#A6A9B6"
         android:orientation="vertical"
         android:paddingTop="5dp"
@@ -186,6 +187,7 @@
         >
 
         <Button
+            android:id="@+id/button_save_user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingStart="22dp"
@@ -194,28 +196,6 @@
 
     </LinearLayout>
 
-    <View
-        android:id="@+id/divider"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="?android:attr/listDivider"
-        android:layout_marginHorizontal="16dp"
-        app:layout_constraintVertical_bias="0.29"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
 
-    <View
-        android:id="@+id/divider2"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="?android:attr/listDivider"
-        android:layout_marginHorizontal="16dp"
-        app:layout_constraintVertical_bias="0.375"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
