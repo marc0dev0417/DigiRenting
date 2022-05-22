@@ -10,8 +10,10 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyecto_movil.R
+import com.example.proyecto_movil.model.FavoriteDataSQL
 import com.example.proyecto_movil.model.HouseLocation
 import com.example.proyecto_movil.model.User
+import com.example.proyecto_movil.sqltoken.ManagerToken
 import com.flaviofaria.kenburnsview.KenBurnsView
 import com.squareup.picasso.Picasso
 
@@ -20,6 +22,9 @@ class HouseLocationsAdapter(context: Context?, private var imageHouseList: Mutab
 
     private var context = context
     private var liked = false
+
+    private lateinit var databaseSQL: ManagerToken
+    private var listSQL = mutableListOf<FavoriteDataSQL>()
 
     class TravelLocationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var kbvLocation: KenBurnsView? = null
@@ -48,6 +53,20 @@ class HouseLocationsAdapter(context: Context?, private var imageHouseList: Mutab
 
     override fun onBindViewHolder(holder: TravelLocationViewHolder, position: Int) {
 
+        databaseSQL = ManagerToken(context)
+
+        listSQL = databaseSQL.viewHouseFavorite()
+
+        Log.d("sizeFavHome", listSQL.size.toString())
+
+        Log.d("lastPosition", position.toString())
+
+           for(favorite: FavoriteDataSQL in listSQL) {
+                   if (imageHouseList[position].idHouse == favorite.houseId) {
+                       liked = true
+                       holder.imageViewLiked?.setImageResource(R.drawable.ic_baseline_favorite_24)
+                   }
+       }
         Picasso.get().load(imageHouseList[position].url).into(holder.kbvLocation)
         holder.textRegion?.text = imageHouseList[position].region
         holder.textAddress?.text = imageHouseList[position].address
@@ -55,7 +74,7 @@ class HouseLocationsAdapter(context: Context?, private var imageHouseList: Mutab
 
         holder.kbvLocation?.setOnClickListener {
             Toast.makeText(context, "hola funciono $position", Toast.LENGTH_SHORT).show()
-            Log.d("xD1", imageHouseList[position].url1.toString()+" "+imageHouseList[position].url2+ " owner "+imageHouseList[position].owner)
+            Log.d("xD1", imageHouseList[position].url1.toString()+ " owner "+imageHouseList[position].owner)
         }
 
         holder.imageViewLiked?.setOnClickListener {
@@ -63,10 +82,23 @@ class HouseLocationsAdapter(context: Context?, private var imageHouseList: Mutab
                 liked = true
                 Toast.makeText(context, "House added to like", Toast.LENGTH_SHORT).show()
                 holder.imageViewLiked!!.setImageResource(R.drawable.ic_baseline_favorite_24)
+
+                databaseSQL.addFavorite(
+                    imageHouseList[position].idHouse!!,
+                    imageHouseList[position].owner!!,
+                    imageHouseList[position].url!!,
+                    imageHouseList[position].region!!,
+                    imageHouseList[position].price!!.toDouble(),
+                    imageHouseList[position].userId!!
+                )
             } else if (liked) {
                 liked = false
                 Toast.makeText(context, "House not added to like", Toast.LENGTH_SHORT).show()
                 holder.imageViewLiked!!.setImageResource(R.drawable.ic_baseline_favorite_border_24)
+
+                databaseSQL.deleteFavorite(imageHouseList[position].idHouse!!)
+
+
             }
         }
     }

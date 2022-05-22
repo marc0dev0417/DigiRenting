@@ -42,13 +42,11 @@ class ManagerToken(
         // method to execute above sql query
         dataBaseSQL?.execSQL(sqlCreateTable)
 
-        val sqlCreateTableFavorite = "CREATE TABLE $TABLE_HOUSE ($KEY_ID_HOUSE INTEGER PRIMARY KEY, $COL_OWNER TEXT, $COL_URL TEXT, $COL_REGION TEXT, $COL_PRICE DOUBLE, FOREIGN KEY ($KEY_ID) REFERENCES $TABLE_USER($KEY_ID))"
+        val sqlCreateTableFavorite = "CREATE TABLE $TABLE_HOUSE ($KEY_ID_HOUSE INTEGER PRIMARY KEY, $COL_OWNER TEXT, $COL_URL TEXT, $COL_REGION TEXT, $COL_PRICE DOUBLE, $KEY_ID INTEGER,  FOREIGN KEY($KEY_ID) REFERENCES $TABLE_USER($KEY_ID))"
         dataBaseSQL?.execSQL(sqlCreateTableFavorite)
     }
     override fun onUpgrade(dataBaseSQL: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
         dataBaseSQL?.execSQL("DROP TABLE IF EXISTS $TABLE_USER")
-        onCreate(dataBaseSQL)
-
         dataBaseSQL?.execSQL("DROP TABLE IF EXISTS $TABLE_HOUSE")
         onCreate(dataBaseSQL)
     }

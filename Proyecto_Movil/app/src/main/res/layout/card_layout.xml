@@ -26,7 +26,7 @@
             android:layout_marginRight="16dp"/>
 
         <TextView
-            android:id="@+id/item_title"
+            android:id="@+id/item_region"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -38,7 +38,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/item_detail"
+            android:id="@+id/item_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Detalles"
@@ -46,7 +46,7 @@
             android:textStyle="bold"
             android:layout_toEndOf="@+id/item_image"
             android:layout_toRightOf="@id/item_image"
-            android:layout_below="@id/item_title"
+            android:layout_below="@id/item_region"
             android:textSize="30sp"/>
 
 
