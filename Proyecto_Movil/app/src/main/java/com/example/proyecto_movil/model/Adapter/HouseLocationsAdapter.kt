@@ -1,6 +1,7 @@
 package com.example.proyecto_movil.model.Adapter
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +9,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.example.proyecto_movil.CardDetailActivity
 import com.example.proyecto_movil.R
 import com.example.proyecto_movil.model.FavoriteDataSQL
 import com.example.proyecto_movil.model.HouseLocation
@@ -73,8 +76,20 @@ class HouseLocationsAdapter(context: Context?, private var imageHouseList: Mutab
         holder.textPrice?.text = imageHouseList[position].price.toString()
 
         holder.kbvLocation?.setOnClickListener {
-            Toast.makeText(context, "hola funciono $position", Toast.LENGTH_SHORT).show()
-            Log.d("xD1", imageHouseList[position].url1.toString()+ " owner "+imageHouseList[position].owner)
+
+            val intentInfoHouse = Intent(context, CardDetailActivity::class.java)
+
+            intentInfoHouse.putExtra("intentUrl", imageHouseList[position].url)//Pass url to Activity
+            intentInfoHouse.putExtra("intentUrlSecond", imageHouseList[position].url1) //Pass url1 to Activity
+            intentInfoHouse.putExtra("intentRegion", imageHouseList[position].region) //Pass region to Activity
+            intentInfoHouse.putExtra("intentAddress", imageHouseList[position].address)
+            intentInfoHouse.putExtra("intentPrice", imageHouseList[position].price)
+            intentInfoHouse.putExtra("intentSpace", imageHouseList[position].space)
+            intentInfoHouse.putExtra("intentMail", imageHouseList[position].mail)
+
+            context?.startActivity(intentInfoHouse)
+            //Toast.makeText(context, "hola funciono $position", Toast.LENGTH_SHORT).show()
+            //Log.d("xD1", imageHouseList[position].url1.toString()+ " owner "+imageHouseList[position].owner)
         }
 
         holder.imageViewLiked?.setOnClickListener {

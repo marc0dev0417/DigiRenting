@@ -34,7 +34,7 @@ class LoginActivity : AppCompatActivity() {
     private var listUserSql: MutableList<UserDataSQL> = mutableListOf()
     private var userProfile = UserDataSQL()
 
-    val url = "http://192.168.1.36:8080/login"
+    val url = "http://192.168.87.136:8080/login"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -67,7 +67,7 @@ class HomeFragment : Fragment() {
          locationsViewPager = view.findViewById(R.id.locationsViewPager)
 
 
-        findHouseAPI("http://192.168.1.36:8080/users", userDataSQL.token.toString())
+        findHouseAPI("http://192.168.87.136:8080/users", userDataSQL.token.toString())
 
         locationsViewPager.adapter = HouseLocationsAdapter(context, userToMutableList)
         locationsViewPager.clipToPadding = false
@@ -100,7 +100,7 @@ class HomeFragment : Fragment() {
 
                 for(userItem in listUser){
                     for(house in userItem.houses!!){
-                            userToMutableList.add(HouseLocation(house.idHouse,userItem.username ,house.images!![0].url, house.images!![1].url,  house.region, house.address, house.price, userItem.idUser))
+                            userToMutableList.add(HouseLocation(house.idHouse,userItem.username, userItem.mail ,house.images!![0].url, house.images!![1].url,  house.region, house.address, house.price, house.space ,userItem.idUser))
                         for (image in house.images!!){
                             Log.d("ima", image.url.toString())
                         }
