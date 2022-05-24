@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyecto_movil.R
@@ -18,10 +19,16 @@ class AdapterRemoveHouse(context: Context? = null, listImage: MutableList<ModelR
 
     class ImageHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var imageView: ImageView? = null
+        var textPrice: TextView? = null
+        var textRegion: TextView? = null
+
         var buttonRemove: ImageView? = null
 
         init {
         imageView = itemView.findViewById(R.id.image_house_url)
+        textPrice = itemView.findViewById(R.id.item_price_remove)
+        textRegion = itemView.findViewById(R.id.item_region_remove)
+
         buttonRemove = itemView.findViewById(R.id.button_remove)
         }
     }
@@ -33,7 +40,10 @@ class AdapterRemoveHouse(context: Context? = null, listImage: MutableList<ModelR
     }
 
     override fun onBindViewHolder(holder: ImageHolder, position: Int) {
+
         Picasso.get().load(listRemoveHouse[position].url).resize(400, 400).into(holder.imageView)
+        holder.textPrice?.text = listRemoveHouse[position].price.toString()
+        holder.textRegion?.text = listRemoveHouse[position].region
 
         holder.buttonRemove?.setOnClickListener {
             Toast.makeText(context, "hello i am position $position", Toast.LENGTH_SHORT).show()
