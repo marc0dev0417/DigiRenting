@@ -63,7 +63,7 @@ class RemoveHouseFragment : Fragment() {
     }
     private fun findImageRequest(){
 
-        var url = "http://192.168.50.93:8080/users/${userProfile.idUser}"
+        var url = "http://192.168.1.130:8080/users/${userProfile.idUser}"
 
         gson = Gson()
 

@@ -67,7 +67,7 @@ class HomeFragment : Fragment() {
          locationsViewPager = view.findViewById(R.id.locationsViewPager)
 
 
-        findHouseAPI("http://192.168.87.136:8080/users", userDataSQL.token.toString())
+        findHouseAPI("http://192.168.1.130:8080/users", userDataSQL.token.toString())
 
         locationsViewPager.adapter = HouseLocationsAdapter(context, userToMutableList)
         locationsViewPager.clipToPadding = false

@@ -64,7 +64,7 @@ class AdapterRemoveHouse(context: Context? = null, listImage: MutableList<ModelR
         holder.buttonRemove?.setOnClickListener {
             val positionHouseFavorite = listRemoveHouse[position].idHouse
             val stringRequest = object : StringRequest(
-                Method.DELETE, "http://192.168.50.93:8080/users/delete/house?idUser=${userProfile.idUser}&idHouse=${listRemoveHouse[position].idHouse}",
+                Method.DELETE, "http://192.168.1.130:8080/users/delete/house?idUser=${userProfile.idUser}&idHouse=${listRemoveHouse[position].idHouse}",
                 {
                     var newPosition = position
 
