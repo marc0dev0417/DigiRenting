@@ -9,13 +9,23 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.android.volley.RequestQueue
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 import com.example.proyecto_movil.R
 import com.example.proyecto_movil.model.ModelRemoveHouse
+import com.example.proyecto_movil.model.UserDataSQL
+import com.example.proyecto_movil.sqltoken.ManagerToken
+import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 
 class AdapterRemoveHouse(context: Context? = null, listImage: MutableList<ModelRemoveHouse>) : RecyclerView.Adapter<AdapterRemoveHouse.ImageHolder>() {
     private var context: Context = context!!
-     private var listRemoveHouse: MutableList<ModelRemoveHouse> = listImage
+    private var listRemoveHouse: MutableList<ModelRemoveHouse> = listImage
+
+    private val gson = Gson()
+    private lateinit var mRequestQueue: RequestQueue
+    private lateinit var databaseSQL: ManagerToken
 
     class ImageHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var imageView: ImageView? = null
@@ -41,20 +51,46 @@ class AdapterRemoveHouse(context: Context? = null, listImage: MutableList<ModelR
 
     override fun onBindViewHolder(holder: ImageHolder, position: Int) {
 
+        databaseSQL = ManagerToken(context)
+
+       val userProfile = databaseSQL.viewUserWithToken()[0]
+
+
+
         Picasso.get().load(listRemoveHouse[position].url).resize(400, 400).into(holder.imageView)
         holder.textPrice?.text = listRemoveHouse[position].price.toString()
         holder.textRegion?.text = listRemoveHouse[position].region
 
         holder.buttonRemove?.setOnClickListener {
-            Toast.makeText(context, "hello i am position $position", Toast.LENGTH_SHORT).show()
+            val positionHouseFavorite = listRemoveHouse[position].idHouse
+            val stringRequest = object : StringRequest(
+                Method.DELETE, "http://192.168.50.93:8080/users/delete/house?idUser=${userProfile.idUser}&idHouse=${listRemoveHouse[position].idHouse}",
+                {
+                    var newPosition = position
 
-            var newPosition = position
+                    listRemoveHouse.removeAt(newPosition)
+                    notifyItemRemoved(newPosition)
 
-            listRemoveHouse.removeAt(newPosition)
-             notifyItemRemoved(newPosition)
+                    notifyItemRangeChanged(position, listRemoveHouse.size)
 
-            notifyItemRangeChanged(position, listRemoveHouse.size)
+                    databaseSQL.deleteFavorite(positionHouseFavorite!!)
+                }, {
+                    Toast.makeText(context, "Fallo en tal cosa $it", Toast.LENGTH_SHORT).show()
+                }){
+                override fun getBodyContentType(): String {
+                    return "application/json"
+                }
 
+                override fun getHeaders(): MutableMap<String, String> {
+                    val accessTokenApi: HashMap<String, String> = HashMap()
+
+                    accessTokenApi["Authorization"] = "Bearer ${userProfile.token}"
+
+                    return accessTokenApi
+                }
+            }
+            mRequestQueue = Volley.newRequestQueue(context)
+            mRequestQueue.add(stringRequest)
         }
     }
 
