@@ -108,7 +108,7 @@ class AddFragment : Fragment() {
         //Images view put reference id =>
         imageViewFirst = view.findViewById(R.id.image_view_first)
         imageViewSecond = view.findViewById(R.id.image_view_second)
-        imageViewThird = view.findViewById(R.id.image_view_third)
+
 
         //Input fields add house =>
         regionEditText = view.findViewById(R.id.region_add_house)
@@ -118,7 +118,7 @@ class AddFragment : Fragment() {
         descriptionEditText = view.findViewById(R.id.description_add_house)
 
         buttonUpload.setOnClickListener {
-            url = "http://192.168.1.130:8080/users/${userProfile.idUser}"
+            url = "http://192.168.1.36:8080/users/${userProfile.idUser}"
             var house: House
 
     if(validationFields()){
@@ -136,13 +136,14 @@ class AddFragment : Fragment() {
                     firebaseUri.addOnSuccessListener { uri ->
                         listImage.add(Image(null, uri.toString()))
                     }
+
                 }
         }
         uploadTask =
-            storageReference.child("houses_images/${fileImage.name}").putFile(listUriImage[2])
+            storageReference.child("houses_images/${fileImage.name}").putFile(listUriImage[1])
             uploadTask.addOnCompleteListener {
 
-                Toast.makeText(context, "Termino la tarea ${listImage.size}", Toast.LENGTH_SHORT)
+                Toast.makeText(context, "Se ha subido", Toast.LENGTH_SHORT)
                     .show()
 
                 house = House(
@@ -204,9 +205,6 @@ class AddFragment : Fragment() {
                 2 -> {
                     selectedImage()
                 }
-                3 -> {
-                    selectedImage()
-                }
             }
         }
     }
@@ -228,10 +226,6 @@ class AddFragment : Fragment() {
                 }
                 2 -> {
                     imageViewSecond.setImageURI(imageUri)
-                    listUriImage.add(imageUri)
-                }
-                3 -> {
-                    imageViewThird.setImageURI(imageUri)
                     listUriImage.add(imageUri)
                     buttonChoose.isEnabled = false
                 }
