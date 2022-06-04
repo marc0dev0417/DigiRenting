@@ -18,7 +18,6 @@ class SignupActivity : AppCompatActivity() {
     private lateinit var gson: Gson
     private lateinit var mRequestQueue: RequestQueue
     private lateinit var buttonCreateUser: Button
-    private lateinit var buttonBackToLogin: Button
 
     private lateinit var fieldMail : EditText
     private lateinit var fieldUsername : EditText
@@ -38,7 +37,6 @@ class SignupActivity : AppCompatActivity() {
         setContentView(R.layout.activity_signup)
 
         buttonCreateUser = findViewById(R.id.bSignup_Signup)
-        buttonBackToLogin = findViewById(R.id.bBackLogin_Signup)
 
         fieldMail = findViewById(R.id.etEmail_Signup)
         fieldUsername = findViewById(R.id.etUsername_Signup)
@@ -50,8 +48,6 @@ class SignupActivity : AppCompatActivity() {
 
 
         buttonCreateUser.setOnClickListener { addUser() }
-
-        buttonBackToLogin.setOnClickListener { startActivity(Intent(this, LoginActivity::class.java)) }
 
     }
 

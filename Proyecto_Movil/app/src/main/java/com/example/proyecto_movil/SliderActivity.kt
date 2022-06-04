@@ -81,7 +81,7 @@ class SliderActivity : AppCompatActivity() {
                         buttonPrev.isEnabled = false
                         buttonPrev.visibility = (View.INVISIBLE)
 
-                        buttonNext.text = "Next"
+                        buttonNext.text = getString(R.string.Next)
                         buttonPrev.text = ""
 
                     }
@@ -92,8 +92,8 @@ class SliderActivity : AppCompatActivity() {
                         buttonPrev.isEnabled = true
                         buttonPrev.visibility = (View.VISIBLE)
 
-                        buttonNext.text = "Finish"
-                        buttonPrev.text = "Previous"
+                        buttonNext.text = getString(R.string.Finish)
+                        buttonPrev.text = getString(R.string.Previous)
 
                     }
 
@@ -103,8 +103,8 @@ class SliderActivity : AppCompatActivity() {
                         buttonPrev.isEnabled = true
                         buttonPrev.visibility = (View.VISIBLE)
 
-                        buttonNext.text = "Next"
-                        buttonPrev.text = "Previous"
+                        buttonNext.text = getString(R.string.Next)
+                        buttonPrev.text = getString(R.string.Previous)
 
                     }
                 }
@@ -117,22 +117,19 @@ class SliderActivity : AppCompatActivity() {
         mDots = Array(TOTAL_SLIDER_FRAGMENTS) { null }
         dotLayout.removeAllViews()
 
-        for (i in mDots.indices) {
+        for (i in 0 until TOTAL_SLIDER_FRAGMENTS) {
 
             mDots[i] = TextView(this)
-            //mDots[i]?.text = Html.fromHtml("&#8226")
             mDots[i]?.text = HtmlCompat.fromHtml("&#8226", HtmlCompat.FROM_HTML_MODE_LEGACY)
             mDots[i]?.textSize = 35F
-            //mDots[i]?.setTextColor(resources.getColor(R.color.white))
-            mDots[i]?.setTextColor(resources.getColor(R.color.white, theme))
+            mDots[i]?.setTextColor(resources.getColor(R.color.secondaryText, theme))
 
             dotLayout.addView(mDots[i])
 
         }
 
         if (mDots.isNotEmpty()) {
-           // mDots[position]?.setTextColor(resources.getColor(R.color.purple_500))
-            mDots[position]?.setTextColor(resources.getColor(R.color.purple_500, theme))
+            mDots[position]?.setTextColor(resources.getColor(R.color.bordersAndFill, theme))
         }
     }
 }

@@ -16,17 +16,15 @@ class SliderAdapter : PagerAdapter() {
     lateinit var layoutInflater: LayoutInflater
 
     //arrays
-    private val slideImages = arrayOf(R.drawable.google_logo,
-                                R.drawable.fb_logo,
-                                R.drawable.twitter_logo)
+    private val slideImages = arrayOf(R.drawable.ic_round_home_24,
+                                R.drawable.ic_round_favorite_24,
+                                R.drawable.ic_round_add_home_24)
 
-    private val slideTitles = arrayOf("Title 1",
-                                "Title 2",
-                                "Title 3")
+    private val slideTitles = arrayOf<String>()
 
-    private val slideDescriptions = arrayOf("Description 1",
-                                    "Descrpition 2",
-                                    "Description 3")
+    private val slideDescriptions = arrayOf(R.string.HomeFragmentDescription.toString(),
+                                    R.string.FavoritesFragmentDescription.toString(),
+                                    R.string.AddFragmentDescription.toString())
 
     override fun getCount(): Int {
 

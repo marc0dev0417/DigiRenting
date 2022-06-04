@@ -2,4 +2,44 @@
     <string name="app_name">Proyecto_Movil</string>
     <string name="presentAppHome">This is my DigiRenting App</string>
     <string name="textMainHome">Welcome to my application</string>
+    <string name="Username">Username</string>
+    <string name="Login">Login</string>
+    <string name="SignUp">Sign Up</string>
+    <string name="FirstName">First Name</string>
+    <string name="LastName">Last name</string>
+    <string name="Address">Address</string>
+    <string name="Email">Email</string>
+    <string name="Password">Password</string>
+    <string name="RepeatPassword">Repeat password</string>
+
+    <string-array name="titlesSlider">
+
+        <item>Home Fragment</item>
+        <item>Favorites Fragment</item>
+        <item>Add Fragment</item>
+
+    </string-array>
+    <string-array name="descriptionsSlider">
+
+        <item>The home fragment is the first screen that you will see. There you can find houses that are waiting for you to live in them</item>
+        <item>The favorites fragment is where you will find the houses that you like the most. As we do not know you, you will have to select them</item>
+        <item>We know that some people are real business experts, if you are one of these today is your lucky day. From this screen you will have the opportunity to add houses in our app</item>
+
+    </string-array>
+
+    <string name="HomeFragment">Home Fragment</string>
+    <string name="FavoritesFragment">Favorites Fragment</string>
+    <string name="AddFragment">Add Fragment</string>
+
+    <string name="HomeFragmentDescription">The home fragment is the first screen that you will see. There you can find houses that are waiting for you to live in them</string>
+    <string name="FavoritesFragmentDescription">The favorites fragment is where you will find the houses that you like the most. As we do not know you, you will have to select them</string>
+    <string name="AddFragmentDescription">We know that some people are real business experts, if you are one of these today is your lucky day. From this screen you will have the opportunity to add houses in our app</string>
+    <string name="Next">Next</string>
+    <string name="Previous">Previous</string>
+    <string name="Finish">Finish</string>
+    <string name="Discover">Discover</string>
+    <string name="Favorite">Favorite</string>
+    <string name="Add">Add</string>
+    <string name="Profile">Profile</string>
+    <string name="RemoveHouse">Remove House</string>
 </resources>

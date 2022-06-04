@@ -3,5 +3,6 @@
     <corners android:radius="25dp"/>
     <stroke
         android:width="3dp"
-        android:color="#D3D3D3"/>
+        android:color="@color/bordersAndFill"/>
+    
 </shape>

@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/wallpaper_slider"
+    android:background="@color/white"
     tools:context=".SliderActivity">
 
     <Button
@@ -14,10 +14,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="false"
+        android:background="@drawable/button_rounded"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="300dp"
         android:layout_marginBottom="30dp"
-        android:text="Next" />
+        android:text="@string/Next" />
 
     <Button
         android:id="@+id/buttonPrev"
@@ -25,9 +26,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
+        android:background="@drawable/button_rounded_border"
+        android:textColor="@color/importantText"
         android:layout_marginEnd="300dp"
         android:layout_marginBottom="30dp"
-        android:text="Previous"
+        android:text="@string/Previous"
         android:visibility="invisible" />
 
     <androidx.viewpager.widget.ViewPager

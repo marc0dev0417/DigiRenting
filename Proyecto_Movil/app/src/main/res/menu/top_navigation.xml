@@ -3,7 +3,8 @@
     <item
         android:id="@+id/nav_profile"
         android:icon="@drawable/ic_baseline_face_24"
-        android:title="Profile"/>
+        android:iconTint="@color/white"
+        android:title="@string/Profile"/>
     <item
         android:id="@+id/empty1"
         android:title=""
@@ -11,6 +12,7 @@
     <item
         android:id="@+id/nav_delete_house"
         android:icon="@drawable/trash_house"
-        android:title="Remove House"/>
+        android:iconTint="@color/white"
+        android:title="@string/RemoveHouse"/>
 
 </menu>
