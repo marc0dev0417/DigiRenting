@@ -19,7 +19,6 @@ import com.example.proyecto_movil.LoginActivity
 import com.example.proyecto_movil.MainMenu
 import com.example.proyecto_movil.R
 import com.example.proyecto_movil.model.Token
-import com.example.proyecto_movil.model.User
 import com.example.proyecto_movil.model.UserDataSQL
 import com.example.proyecto_movil.model.UserUpdate
 import com.example.proyecto_movil.sqltoken.ManagerToken
@@ -46,8 +45,6 @@ class ProfileFragment : Fragment(){
     private lateinit var tvAddress: TextView
     private lateinit var tvPassword: TextView
 
-
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -73,7 +70,7 @@ class ProfileFragment : Fragment(){
 
         userProfile = listUserSql[0]
 
-        val url = "http://192.168.1.128:8080/users/update/${userProfile.idUser}"
+        val url = "http://192.168.1.37:8080/users/update/${userProfile.idUser}"
 
 
         Log.d("profileUsername", userProfile.username.toString())
@@ -99,8 +96,8 @@ class ProfileFragment : Fragment(){
         tvUsername.text = userProfile.username
         tvMail.text = userProfile.mail
         tvAddress.text = userProfile.address
-        tvPassword.text = ""
 
+        tvPassword.text = ""
 
         buttonSaveUser.setOnClickListener {
             val builder: AlertDialog.Builder = AlertDialog.Builder(context)
