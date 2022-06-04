@@ -73,7 +73,7 @@ class ProfileFragment : Fragment(){
 
         userProfile = listUserSql[0]
 
-        val url = "http://192.168.1.130:8080/users/update/${userProfile.idUser}"
+        val url = "http://192.168.1.128:8080/users/update/${userProfile.idUser}"
 
 
         Log.d("profileUsername", userProfile.username.toString())

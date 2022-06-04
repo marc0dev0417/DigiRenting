@@ -1,6 +1,8 @@
 package com.example.proyecto_movil
 
 import android.content.Context
+import android.content.res.Resources
+import android.provider.Settings.System.getString
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,15 +22,9 @@ class SliderAdapter : PagerAdapter() {
                                 R.drawable.ic_round_favorite_24,
                                 R.drawable.ic_round_add_home_24)
 
-    private val slideTitles = arrayOf<String>()
-
-    private val slideDescriptions = arrayOf(R.string.HomeFragmentDescription.toString(),
-                                    R.string.FavoritesFragmentDescription.toString(),
-                                    R.string.AddFragmentDescription.toString())
-
     override fun getCount(): Int {
 
-        return slideTitles.size
+        return slideImages.size
 
     }
 
@@ -41,6 +37,10 @@ class SliderAdapter : PagerAdapter() {
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
 
         layoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+
+        var slideTitles : Array<String> = context.resources.getStringArray(R.array.titlesSlider)
+        var slideDescriptions : Array<String> = context.resources.getStringArray(R.array.descriptionsSlider)
+
         var view : View = layoutInflater.inflate(R.layout.slide_layout, container, false)
 
         var slideImageView : ImageView = view.findViewById(R.id.ivLogo_slider) as ImageView
@@ -62,7 +62,5 @@ class SliderAdapter : PagerAdapter() {
         container.removeView(`object` as RelativeLayout)
 
     }
-
-
 
 }

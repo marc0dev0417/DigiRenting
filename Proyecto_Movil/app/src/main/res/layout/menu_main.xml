@@ -22,11 +22,9 @@
         app:backgroundTint="@color/bordersAndFill"
         app:iconSize="30dp"
         app:iconTint="@color/secondaryText"
-        app:iconTintActive="@color/bordersAndFill"
+        app:iconTintActive="@color/white"
         app:textColor="@color/importantText"
-        app:textSize="20sp">
-
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
+        app:textSize="20sp"/>
 
     <me.ibrahimsn.lib.SmoothBottomBar
         android:id="@+id/bottomBar"
