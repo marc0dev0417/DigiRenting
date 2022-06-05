@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
 
@@ -30,7 +31,7 @@ class SliderAdapter : PagerAdapter() {
 
     override fun isViewFromObject(view: View, o : Any): Boolean {
 
-        return view == o as RelativeLayout
+        return view == o as ConstraintLayout
 
     }
 
@@ -59,7 +60,7 @@ class SliderAdapter : PagerAdapter() {
 
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
 
-        container.removeView(`object` as RelativeLayout)
+        container.removeView(`object` as ConstraintLayout)
 
     }
 

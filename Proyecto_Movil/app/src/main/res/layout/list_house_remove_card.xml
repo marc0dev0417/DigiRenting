@@ -5,17 +5,16 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:id="@+id/card_view"
     android:layout_margin="12dp"
-    card_view:cardBackgroundColor="#D4D4D4"
-    card_view:cardCornerRadius="20dp"
-    card_view:cardElevation="6dp"
-    card_view:contentPadding="4dp">
+    card_view:cardBackgroundColor="@color/white"
+    card_view:cardCornerRadius="30dp"
+    card_view:cardElevation="6dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingVertical="16dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="8dp">
+        android:background="@drawable/card_rounded_border"
+        android:padding="16dp">
 
         <ImageView
             android:id="@+id/image_house_url"
@@ -28,27 +27,28 @@
             android:layout_marginRight="16dp"/>
 
         <TextView
-            android:id="@+id/item_price_remove"
+            android:id="@+id/item_region_remove"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_toEndOf="@+id/image_house_url"
             android:layout_toRightOf="@id/image_house_url"
             android:text="Titulo"
-            android:textColor="@color/white"
+            android:textColor="@color/importantText"
             android:textSize="30sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/item_region_remove"
+            android:id="@+id/item_price_remove"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Detalles"
-            android:textColor="@color/white"
+            android:textColor="@color/secondaryText"
             android:textStyle="bold"
             android:layout_toEndOf="@+id/image_house_url"
             android:layout_toRightOf="@id/image_house_url"
-            android:layout_below="@id/item_price_remove"
+            android:layout_below="@id/item_region_remove"
+            android:layout_marginTop="10dp"
             android:textSize="30sp"/>
 
         <ImageView

@@ -3,14 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorBackgroundFragment">
 
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="105dp"
         android:text="Perfil"
         android:textColor="@color/black"
         android:textStyle="bold"
@@ -30,12 +31,13 @@
 
     <Button
         android:id="@+id/button_cerrar_sesion"
-        android:layout_width="121dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="136dp"
-        android:text="Close"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="93dp" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/SignOut"
+        android:background="@drawable/button_rounded"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvProfilePresentation" />
 
     <ImageView
         android:id="@+id/ivProfile"
@@ -50,151 +52,147 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <LinearLayout
-        android:id="@+id/llUsername"
+        android:id="@+id/llGeneral"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_marginTop="24dp"
-        android:background="#A6A9B6"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivProfile">
+        app:layout_constraintTop_toBottomOf="@+id/button_cerrar_sesion"
+        app:layout_constraintVertical_bias="0.10"
+        android:layout_marginHorizontal="15dp"
+        android:background="@drawable/card_rounded_border">
 
-        <TextView
-            android:id="@+id/tvTitleUsername"
+        <LinearLayout
+            android:id="@+id/llUsername"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-
-            android:text="Username"
-            android:textColor="@color/black"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/tvUsername"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingStart="22dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="15dp"
+            android:orientation="vertical"
             android:paddingTop="5dp"
-            android:text="Docker"/>
+            android:paddingBottom="5dp">
+
+            <TextView
+                android:id="@+id/tvTitleUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:text="Username"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/tvUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="25dp"
+                android:textColor="@color/importantText"
+                android:paddingStart="22dp"
+                android:paddingTop="5dp"
+                android:text="Docker" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llMail"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="vertical"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp">
+
+            <TextView
+                android:id="@+id/tvTitleMail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:text="Mail"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/tvMail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="25dp"
+                android:textColor="@color/importantText"
+                android:paddingStart="22dp"
+                android:paddingTop="5dp"
+                android:text="Docker@mail.com" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llAddress"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="vertical"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp">
+
+            <TextView
+                android:id="@+id/tvTitleAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:text="Address"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/tvAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="25dp"
+                android:textColor="@color/importantText"
+                android:paddingStart="22dp"
+                android:paddingTop="5dp"
+                android:text="Calle Goya 1, Huesca" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llPassword"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="vertical"
+            android:layout_marginBottom="15dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp">
+
+            <TextView
+                android:id="@+id/tvTitlePassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:text="Password"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/tvPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="25dp"
+                android:textColor="@color/importantText"
+                android:paddingStart="22dp"
+                android:paddingTop="5dp"
+                android:text="iker123" />
+        </LinearLayout>
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/llMail"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="#A6A9B6"
-        android:orientation="vertical"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
+    <Button
+        android:id="@+id/button_save_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="20dp"
+        android:background="@drawable/button_rounded"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/llUsername">
-
-        <TextView
-            android:id="@+id/tvTitleMail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:text="Mail"
-            android:textColor="@color/black"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/tvMail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingStart="22dp"
-            android:paddingTop="5dp"
-            android:text="Docker@mail.com" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/llAddress"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="#A6A9B6"
-        android:orientation="vertical"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/llMail">
-
-        <TextView
-            android:id="@+id/tvTitleAddress"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:text="Address"
-            android:textColor="@color/black"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/tvAddress"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingStart="22dp"
-            android:paddingTop="5dp"
-            android:text="Calle Goya 1, Huesca" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/llPassword"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="#A6A9B6"
-        android:orientation="vertical"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/llAddress">
-
-        <TextView
-            android:id="@+id/tvTitlePassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:text="Password" />
-
-        <EditText
-            android:id="@+id/tvPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingStart="22dp"
-            android:paddingTop="5dp"
-            android:text="iker123"
-            android:inputType="textPassword"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/llBotonChange"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="#A6A9B6"
-        android:orientation="vertical"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/llPassword"
-        >
-
-        <Button
-            android:id="@+id/button_save_user"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingStart="22dp"
-            android:paddingTop="5dp"
-            android:text="Change Profile"/>
-
-    </LinearLayout>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/llGeneral"
+        app:layout_constraintVertical_bias="0.15"
+        android:text="@string/ChangeProfile"/>
 
 
 

@@ -30,11 +30,10 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:layout_width="16dp"
-                android:layout_height="16dp"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
                 android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_star"
-                app:tint="#FFFFFF" />
+                android:src="@drawable/ic_baseline_attach_money_24"/>
 
             <TextView
                 android:id="@+id/textPrice"
@@ -65,7 +64,7 @@
                 android:layout_height="22dp"
                 android:contentDescription="@string/app_name"
                 android:src="@drawable/ic_baseline_favorite_border_24"
-                app:tint="#FFFFFF" />
+                app:tint="@color/bordersAndFill" />
 
         </LinearLayout>
 

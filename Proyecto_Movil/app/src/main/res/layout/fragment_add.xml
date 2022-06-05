@@ -14,17 +14,18 @@
             android:layout_width="110dp"
             android:layout_height="110dp"
             android:layout_gravity="start|top"
+            android:layout_marginLeft="45dp"
             android:scaleType="fitXY"
-            android:src="@drawable/house_view"
-             />
+            android:src="@drawable/house_icon_add" />
 
         <ImageView
             android:id="@+id/image_view_second"
             android:layout_width="110dp"
             android:layout_height="110dp"
             android:layout_gravity="end|top"
+            android:layout_marginRight="45dp"
             android:scaleType="fitXY"
-            android:src="@drawable/house_view" />
+            android:src="@drawable/house_icon_add" />
 
 
         <Button
@@ -32,19 +33,21 @@
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:layout_gravity="center|top"
-            android:layout_marginTop="165dp"
-            android:text="Choose" />
+            android:layout_marginTop="140dp"
+            android:background="@drawable/button_rounded"
+            android:text="@string/Choose" />
 
         <EditText
             android:id="@+id/region_add_house"
             android:layout_width="317dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
-            android:layout_marginTop="240dp"
+            android:layout_marginTop="200dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/edit_text_rounded"
-            android:backgroundTint="@color/black"
-            android:hint="Region"
+            android:textColorHint="@color/secondaryText"
+            android:textColor="@color/importantText"
+            android:hint="@string/Region"
             android:inputType="textPersonName"
             android:paddingVertical="13dp"
             android:paddingLeft="20dp" />
@@ -54,11 +57,12 @@
             android:layout_width="317dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
-            android:layout_marginTop="300dp"
+            android:layout_marginTop="260dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/edit_text_rounded"
-            android:backgroundTint="@color/black"
-            android:hint="Address"
+            android:textColorHint="@color/secondaryText"
+            android:textColor="@color/importantText"
+            android:hint="@string/Address"
             android:inputType="textPersonName"
             android:paddingVertical="13dp"
             android:paddingLeft="20dp" />
@@ -68,11 +72,12 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
-            android:layout_marginTop="360dp"
+            android:layout_marginTop="320dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/edit_text_rounded"
-            android:backgroundTint="@color/black"
-            android:hint="Price"
+            android:textColorHint="@color/secondaryText"
+            android:textColor="@color/importantText"
+            android:hint="@string/Price"
             android:inputType="textPersonName"
             android:paddingVertical="13dp"
             android:paddingLeft="20dp" />
@@ -82,11 +87,12 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="216dp"
-            android:layout_marginTop="360dp"
+            android:layout_marginTop="320dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/edit_text_rounded"
-            android:backgroundTint="@color/black"
-            android:hint="Space"
+            android:textColorHint="@color/secondaryText"
+            android:textColor="@color/importantText"
+            android:hint="@string/Space"
             android:inputType="textPersonName"
             android:paddingVertical="13dp"
             android:paddingLeft="20dp" />
@@ -94,16 +100,17 @@
         <EditText
             android:id="@+id/description_add_house"
             android:layout_width="317dp"
-            android:layout_height="130dp"
+            android:layout_height="90dp"
             android:layout_marginStart="50dp"
-            android:layout_marginTop="420dp"
+            android:layout_marginTop="380dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/edit_text_rounded"
-            android:backgroundTint="@color/black"
-            android:hint="Description"
+            android:textColorHint="@color/secondaryText"
+            android:textColor="@color/importantText"
+            android:hint="@string/Description"
             android:inputType="textMultiLine"
-            android:lines="4"
-            android:maxLines="4"
+            android:lines="3"
+            android:maxLines="3"
             android:paddingVertical="13dp"
             android:paddingLeft="20dp" />
 
@@ -111,9 +118,10 @@
             android:id="@+id/button_upload"
             android:layout_width="100dp"
             android:layout_height="40dp"
+            android:background="@drawable/button_rounded"
             android:layout_gravity="center|bottom"
-            android:layout_marginTop="100dp"
-            android:text="Upload" />
+            android:text="@string/Upload"
+            android:layout_marginBottom="25dp"/>
     </FrameLayout>
 
 </RelativeLayout>

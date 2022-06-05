@@ -42,4 +42,13 @@
     <string name="Add">Add</string>
     <string name="Profile">Profile</string>
     <string name="RemoveHouse">Remove House</string>
+    <string name="Choose">Choose</string>
+    <string name="Region">Region</string>
+    <string name="Price">Price</string>
+    <string name="Space">Space</string>
+    <string name="Description">Description</string>
+    <string name="Upload">Upload</string>
+    <string name="SignOut">Sign out</string>
+    <string name="ChangeProfile">Change Profile</string>
+    <string name="MoreInformation">More Information</string>
 </resources>
