@@ -34,7 +34,7 @@ class LoginActivity : AppCompatActivity() {
     private var listUserSql: MutableList<UserDataSQL> = mutableListOf()
     private var userProfile = UserDataSQL()
 
-    val url = "http://192.168.1.128:8080/login"
+    val url = "http://192.168.1.142:8080/login"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -116,7 +116,7 @@ class LoginActivity : AppCompatActivity() {
                     Log.d("responseUser", "User is correct")
                     dataBaseSql.addUserWithToken(tokenUser?.user?.idUser!!.toInt(), tokenUser.token!!, tokenUser.expired_date!!,tokenUser?.user?.firstname!!, tokenUser?.user?.lastname!!,tokenUser?.user?.username!!, tokenUser?.user?.mail!!, tokenUser?.user?.address!!, tokenUser?.user?.password!!)
 
-                    Toast.makeText(applicationContext, "Login correcto", Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext, getString(R.string.LoginCorrecto), Toast.LENGTH_LONG).show()
 
                     val intent = Intent(this, MainMenu::class.java)
                     intent.putExtra("indexUser", tokenUser?.user?.idUser)
@@ -125,7 +125,7 @@ class LoginActivity : AppCompatActivity() {
                 } else {
 
                     Log.d("responseUser", "User is not correct")
-                    Toast.makeText(applicationContext, "Login incorrecto", Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext, getString(R.string.LoginIncorrecto), Toast.LENGTH_LONG).show()
                     fieldUsername.setText("")
                     fieldPassword.setText("")
 
@@ -133,7 +133,7 @@ class LoginActivity : AppCompatActivity() {
 
             }, {
                     Log.d("responseMessage", it.toString())
-                    Toast.makeText(this, "Login incorrecto", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.LoginIncorrecto), Toast.LENGTH_SHORT).show()
             }) {
 
         }

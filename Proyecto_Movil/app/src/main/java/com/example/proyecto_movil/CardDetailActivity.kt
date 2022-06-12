@@ -36,7 +36,7 @@ class CardDetailActivity : AppCompatActivity() {
         Picasso.get().load(url2).into(url2Screen)
         regionScreen.text = "Region: $region"
         addressScreen.text = "Dirección: $address"
-        priceScreen.text = "Precio: $price"
+        priceScreen.text = "Precio: $price $"
         spaceScreen.text = "Metros: $space m2"
         mailScreen.text = "Mail: $mail"
 

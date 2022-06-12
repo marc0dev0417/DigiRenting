@@ -1,28 +1,22 @@
 package com.example.proyecto_movil.fragment
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.*
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.annotation.Nullable
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
-import at.favre.lib.crypto.bcrypt.BCrypt
 import com.android.volley.DefaultRetryPolicy
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import com.example.proyecto_movil.MainMenu
 import com.example.proyecto_movil.R
 import com.example.proyecto_movil.model.Adapter.HouseLocationsAdapter
 import com.example.proyecto_movil.model.HouseLocation
-import com.example.proyecto_movil.model.Token
 import com.example.proyecto_movil.model.User
 import com.example.proyecto_movil.model.UserDataSQL
 import com.example.proyecto_movil.sqltoken.ManagerToken
@@ -67,7 +61,7 @@ class HomeFragment : Fragment() {
          locationsViewPager = view.findViewById(R.id.locationsViewPager)
 
 
-        findHouseAPI("http://192.168.1.128:8080/users", userDataSQL.token.toString())
+        findHouseAPI("http://192.168.1.142:8080/users", userDataSQL.token.toString())
 
         locationsViewPager.adapter = HouseLocationsAdapter(context, userToMutableList)
         locationsViewPager.clipToPadding = false

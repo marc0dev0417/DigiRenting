@@ -118,7 +118,7 @@ class AddFragment : Fragment() {
         descriptionEditText = view.findViewById(R.id.description_add_house)
 
         buttonUpload.setOnClickListener {
-            url = "http://192.168.1.128:8080/users/${userProfile.idUser}"
+            url = "http://192.168.1.142:8080/users/${userProfile.idUser}"
             var house: House
 
     if(validationFields()){
@@ -143,7 +143,7 @@ class AddFragment : Fragment() {
             storageReference.child("houses_images/${fileImage.name}").putFile(listUriImage[1])
             uploadTask.addOnCompleteListener {
 
-                Toast.makeText(context, "Se ha subido", Toast.LENGTH_SHORT)
+                Toast.makeText(context, getString(R.string.Se_ha_subido), Toast.LENGTH_SHORT)
                     .show()
 
                 house = House(
@@ -162,9 +162,9 @@ class AddFragment : Fragment() {
                 val stringRequest = object : StringRequest(
                     Method.PUT, url,
                     {
-                        Toast.makeText(context, "Se ha añadido", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, getString(R.string.Se_ha_añadido), Toast.LENGTH_SHORT).show()
                     }, {
-                        Toast.makeText(context, "No se ha añadido", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, getString(R.string.No_se_ha_añadido), Toast.LENGTH_SHORT).show()
                     }) {
 
                     override fun getBodyContentType(): String {
@@ -189,7 +189,7 @@ class AddFragment : Fragment() {
             }
 
             }else{
-                Toast.makeText(context, "Not uploaded", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, getString(R.string.No_se_ha_subido), Toast.LENGTH_LONG).show()
                 buttonChoose.isEnabled = true
 
                 count = 0

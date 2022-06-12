@@ -4,7 +4,6 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -14,7 +13,6 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.proyecto_movil.R
 import com.example.proyecto_movil.model.ModelRemoveHouse
-import com.example.proyecto_movil.model.UserDataSQL
 import com.example.proyecto_movil.sqltoken.ManagerToken
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
@@ -55,16 +53,14 @@ class AdapterRemoveHouse(context: Context? = null, listImage: MutableList<ModelR
 
        val userProfile = databaseSQL.viewUserWithToken()[0]
 
-
-
         Picasso.get().load(listRemoveHouse[position].url).resize(400, 400).into(holder.imageView)
-        holder.textPrice?.text = listRemoveHouse[position].price.toString()
+        holder.textPrice?.text = listRemoveHouse[position].price.toString() + " $"
         holder.textRegion?.text = listRemoveHouse[position].region
 
         holder.buttonRemove?.setOnClickListener {
             val positionHouseFavorite = listRemoveHouse[position].idHouse
             val stringRequest = object : StringRequest(
-                Method.DELETE, "http://192.168.1.128:8080/users/delete/house?idUser=${userProfile.idUser}&idHouse=${listRemoveHouse[position].idHouse}",
+                Method.DELETE, "http://192.168.1.142:8080/users/delete/house?idUser=${userProfile.idUser}&idHouse=${listRemoveHouse[position].idHouse}",
                 {
                     var newPosition = position
 
@@ -75,7 +71,7 @@ class AdapterRemoveHouse(context: Context? = null, listImage: MutableList<ModelR
 
                     databaseSQL.deleteFavorite(positionHouseFavorite!!)
                 }, {
-                    Toast.makeText(context, "Fallo en tal cosa $it", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, context.getString(R.string.Fallo_en_tal_cosa) + "$it", Toast.LENGTH_SHORT).show()
                 }){
                 override fun getBodyContentType(): String {
                     return "application/json"

@@ -36,7 +36,7 @@ class FavoritesAdapter(context: Context? = null, listFavorite: MutableList<Favor
 
         Picasso.get().load(listFavoriteHouse!![i].url).into(viewHolder.itemImage)
         viewHolder.itemRegion.text = listFavoriteHouse!![i].region
-        viewHolder.itemPrice.text = listFavoriteHouse!![i].price.toString()
+        viewHolder.itemPrice.text = listFavoriteHouse!![i].price.toString() + " $"
 
 
     }

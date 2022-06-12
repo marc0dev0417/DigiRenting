@@ -1,7 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Proyecto_Movil</string>
-    <string name="presentAppHome">This is my DigiRenting App</string>
-    <string name="textMainHome">Welcome to my application</string>
+    <string name="presentAppHome">Esta es mi aplicación DigiRenting</string>
     <string name="Username">Usuario</string>
     <string name="Login">Iniciar sesión</string>
     <string name="SignUp">Registrarse</string>
@@ -10,30 +10,10 @@
     <string name="Address">Dirección</string>
     <string name="Email">Email</string>
     <string name="Password">Contraseña</string>
-
-    <string-array name="titlesSlider">
-
-        <item>Inicio</item>
-        <item>Favorites</item>
-        <item>Añadir</item>
-
-    </string-array>
-    <string-array name="descriptionsSlider">
-
-        <item>The home fragment is the first screen that you will see. There you can find houses that are waiting for you to live in them</item>
-        <item>The favorites fragment is where you will find the houses that you like the most. As we do not know you, you will have to select them</item>
-        <item>We know that some people are real business experts, if you are one of these today is your lucky day. From this screen you will have the opportunity to add houses in our app</item>
-
-    </string-array>
-
+    <string name="textMainHome">Bienvenido a mi aplicación</string>
     <string name="HomeFragment">Descubrir</string>
     <string name="FavoritesFragment">Favoritos</string>
     <string name="AddFragment">Añadir</string>
-
-    <string name="HomeFragmentDescription">El fragmento \"descubrir\" es el primero que verás al iniciar la aplicación. Aquí podrás encontrar casas que estarán esperando a que vivas en ellas.</string>
-    <string name="FavoritesFragmentDescription">El fragmento \"favoritos\" es donde podrás ver las casas que más te gustan. Como no te conocemos todavía, tendrás que seleccionarlas tú</string>
-    <string name="AddFragmentDescription">We know that some people are real business experts, if you are one of these today is your lucky day. From this screen you will have the opportunity to add houses in our app</string>
-
     <string name="Next">Siguiente</string>
     <string name="Previous">Anterior</string>
     <string name="Finish">Finalizar</string>
@@ -56,6 +36,9 @@
     <string name="UserInserted">Usuario añadido</string>
     <string name="PasswordIncorrect">Contraseña incorrecta</string>
     <string name="Cancel">Cancelar</string>
+    <string name="HomeFragmentDescription">El fragmento \"descubrir\" es el primero que verás al iniciar la aplicación. Aquí podrás encontrar casas que estarán esperando a que vivas en ellas.</string>
+    <string name="FavoritesFragmentDescription">El fragmento \"favoritos\" es donde podrás ver las casas que más te gustan. Como no te conocemos todavía, tendrás que seleccionarlas tú</string>
+    <string name="AddFragmentDescription">Sabemos que algunas personas son unos tiburones de los negocios, si este es tu caso hoy es tu día de suerte. Desde este sitio tendrás la posibilidad de añadir casas a nuestra aplicación</string>
     <string name="Se_ha_subido">Se ha subido la casa</string>
     <string name="Se_ha_añadido">Se ha añadido la casa</string>
     <string name="No_se_ha_añadido">No se ha añadido la casa</string>

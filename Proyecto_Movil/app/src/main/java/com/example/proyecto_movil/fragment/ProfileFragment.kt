@@ -70,7 +70,7 @@ class ProfileFragment : Fragment(){
 
         userProfile = listUserSql[0]
 
-        val url = "http://192.168.1.37:8080/users/update/${userProfile.idUser}"
+        val url = "http://192.168.1.142:8080/users/update/${userProfile.idUser}"
 
 
         Log.d("profileUsername", userProfile.username.toString())
@@ -92,7 +92,7 @@ class ProfileFragment : Fragment(){
 
         imageViewProfile.setImageResource(R.drawable.ic_baseline_person_24)
 
-        tvProfilePresentation.text = "Welcome to your data personal ${userProfile.firstname} ${userProfile.lastname}"
+        tvProfilePresentation.text = getString(R.string.DatosPersonales) + " ${userProfile.firstname} ${userProfile.lastname}"
         tvUsername.text = userProfile.username
         tvMail.text = userProfile.mail
         tvAddress.text = userProfile.address
@@ -101,7 +101,7 @@ class ProfileFragment : Fragment(){
 
         buttonSaveUser.setOnClickListener {
             val builder: AlertDialog.Builder = AlertDialog.Builder(context)
-            builder.setTitle("Enter your old password")
+            builder.setTitle(getString(R.string.OldPassword))
 
             val input = EditText(context)
 
@@ -112,12 +112,11 @@ class ProfileFragment : Fragment(){
             builder.setPositiveButton("OK",
                 DialogInterface.OnClickListener { dialog, which ->
 
-                    //Toast.makeText(context, input.text, Toast.LENGTH_SHORT).show()
                     val resultVerify = BCrypt.verifyer().verify(input.text.toString().toCharArray(), userProfile.password)
 
                     if(resultVerify.verified){
                         Log.d("urlProfile", url +"  ${userProfile.token}")
-                        Toast.makeText(context, "user inserted", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, getString(R.string.UserInserted), Toast.LENGTH_SHORT).show()
                         val user = UserUpdate(
                             username = tvUsername.text.toString(),
                             address = tvAddress.text.toString(),
@@ -147,7 +146,7 @@ class ProfileFragment : Fragment(){
                                 token.user!!.password!!
                             )
                                 Log.d("userTokenProfile", token.user!!.username.toString())
-                                //startActivity(Intent(context, LoginActivity::class.java))
+                                startActivity(Intent(context, LoginActivity::class.java))
 
                             }, {
                                 Log.d("Fprofile", it.toString())
@@ -168,11 +167,11 @@ class ProfileFragment : Fragment(){
                         }
                         mRequestQueue.add(stringRequest)
                     }else{
-                        Toast.makeText(context, "password incorrect", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, getString(R.string.PasswordIncorrect), Toast.LENGTH_SHORT).show()
                     }
 
                 })
-            builder.setNegativeButton("Cancel",
+            builder.setNegativeButton(getString(R.string.Cancel),
                 DialogInterface.OnClickListener { dialog, which -> dialog.cancel() })
             builder.show()
             }

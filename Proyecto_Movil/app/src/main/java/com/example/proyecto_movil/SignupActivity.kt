@@ -29,7 +29,7 @@ class SignupActivity : AppCompatActivity() {
 
     private lateinit var userSaveFromJSON: User
 
-    val url = "http://192.168.1.128:8080/register"
+    val url = "http://192.168.1.142:8080/register"
     var indexRegister = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -82,7 +82,7 @@ class SignupActivity : AppCompatActivity() {
 
             }, {
                     Log.d("responseMessage", it.toString())
-                    Toast.makeText(this, "El usuario ya existe", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.El_Usuario_Ya_Existe), Toast.LENGTH_SHORT).show()
             }) {
 
             override fun getBodyContentType(): String {

@@ -88,14 +88,12 @@ class HouseLocationsAdapter(context: Context?, private var imageHouseList: Mutab
             intentInfoHouse.putExtra("intentMail", imageHouseList[position].mail)
 
             context?.startActivity(intentInfoHouse)
-            //Toast.makeText(context, "hola funciono $position", Toast.LENGTH_SHORT).show()
-            //Log.d("xD1", imageHouseList[position].url1.toString()+ " owner "+imageHouseList[position].owner)
         }
 
         holder.imageViewLiked?.setOnClickListener {
             if (!liked) {
                 liked = true
-                Toast.makeText(context, "House added to like", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, context?.getString(R.string.House_added_to_like) , Toast.LENGTH_SHORT).show()
                 holder.imageViewLiked!!.setImageResource(R.drawable.ic_baseline_favorite_24)
 
                 databaseSQL.addFavorite(
@@ -108,7 +106,8 @@ class HouseLocationsAdapter(context: Context?, private var imageHouseList: Mutab
                 )
             } else if (liked) {
                 liked = false
-                Toast.makeText(context, "House not added to like", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context,
+                    context?.getString(R.string.House_not_added_to_like), Toast.LENGTH_SHORT).show()
                 holder.imageViewLiked!!.setImageResource(R.drawable.ic_baseline_favorite_border_24)
 
                 databaseSQL.deleteFavorite(imageHouseList[position].idHouse!!)

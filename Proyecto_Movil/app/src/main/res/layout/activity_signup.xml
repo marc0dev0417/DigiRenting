@@ -130,36 +130,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etEmail_Signup" />
 
-    <EditText
-        android:id="@+id/etRePassword_Signup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/edit_text_rounded"
-        android:hint="@string/RepeatPassword"
-        android:textColorHint="@color/secondaryText"
-        android:textColor="@color/importantText"
-        android:inputType="textPassword"
-        android:paddingVertical="13dp"
-        android:paddingLeft="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPassword_Signup" />
-
     <Button
         android:id="@+id/bSignup_Signup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/button_rounded"
         android:text="Sign up"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etRePassword_Signup" />
+        app:layout_constraintTop_toBottomOf="@+id/etPassword_Signup" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
