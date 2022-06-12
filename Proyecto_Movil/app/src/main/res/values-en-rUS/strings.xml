@@ -14,6 +14,22 @@
     <string name="HomeFragment">Discover</string>
     <string name="FavoritesFragment">Favorites</string>
     <string name="AddFragment">Add</string>
+
+    <string-array name="titlesSlider">
+
+        <item>Discover</item>
+        <item>Favorites</item>
+        <item>Add</item>
+
+    </string-array>
+    <string-array name="descriptionsSlider">
+
+        <item>The home fragment is the first screen that you will see. There you can find houses that are waiting for you to live in them</item>
+        <item>The favorites fragment is where you will find the houses that you like the most. As we do not know you, you will have to select them</item>
+        <item>We know that some people are real business experts, if you are one of these today is your lucky day. From this screen you will have the opportunity to add houses in our app</item>
+
+    </string-array>
+
     <string name="HomeFragmentDescription">The home fragment is the first screen that you will see. There you can find houses that are waiting for you to live in them</string>
     <string name="FavoritesFragmentDescription">The favorites fragment is where you will find the houses that you like the most. As we do not know you, you will have to select them</string>
     <string name="AddFragmentDescription">We know that some people are real business experts, if you are one of these today is your lucky day. From this screen you will have the opportunity to add houses in our app</string>
